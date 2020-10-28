@@ -1,0 +1,28 @@
+{
+  "brands": [
+    {
+      "name": "Phone Cases",
+      "description": "Keep your smartphone looking as good as the day you bought it, with our range of protective cases available in a variety of designs, colours and sizes."
+    },
+    {
+      "name": "Screen Protectors",
+      "description": "Our smartphone screen protectors come in a range of different materials to keep your display safe and scratch-free."
+    },
+    {
+      "name": "Phone Holders",
+      "description": "This means fitting a mobile phone holder won't just keep your dashboard tidy; it could also save you a fortune."
+    },
+    {
+      "name": "Power Banks",
+      "description": "Find your Power bank chargers. All the latest models and great deals on are on Accessories."
+    },
+    {
+      "name": "Cables",
+      "description": "Buy phone cables to charge and transfer data on your phones and tablets."
+    },
+    {
+      "name": "Chargers",
+      "description": "Choose from wide range of fast charges, multi-port and wireless once and charge your phone as you like."
+    }
+  ]
+}
