@@ -9,6 +9,7 @@ import Signin from './components/Signin';
 import Signup from './components/Signup';
 import Checkout from './components/Checkout';
 import Navbar from './components/Navbar/Navbar'
+import Footer from './components/Footer/Footer'
 
 
 const Root = () => (
@@ -20,6 +21,7 @@ const Root = () => (
       <Route component={Signup} path="/signup" />
       <Route component={Checkout} path="/checkout" />
     </Switch>
+    <Footer />
   </Router>
 )
 

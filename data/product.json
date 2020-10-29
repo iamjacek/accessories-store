@@ -3,77 +3,92 @@
     {
       "name": "Iphone 11 Pro Max Case",
       "description": "Keep your iPhone 11 Pro Max safe with this beautifull case. Colors white and red.",
-      "price": "10.50"
+      "price": "10.50",
+      "subcategory": "rugged case"
     },
     {
       "name": "Iphone 11 Pro Case",
       "description": "Keep your iPhone 11 Pro safe with this beautifull case. Colors white, red and blue.",
-      "price": "10.00"
+      "price": "10.00",
+      "subcategory": "thin case"
     },
     {
       "name": "Iphone 8 Case",
       "description": "Keep your iPhone 8 safe with this beautifull case. Fits standard iPhone 8. Colors white, red and blue.",
-      "price": "8.50"
+      "price": "8.50",
+      "subcategory": "hybrid case"
     },
     {
       "name": "OnePlus 5T Screen Protector",
       "description": "Add some extra protection to your phone. If anything happens you don't need to worry. Fits OnePlus 5t screen.",
-      "price": "6.50"
+      "price": "6.50",
+      "subcategory": "TPU"
     },
     {
       "name": "Samsung S8 Screen Protector",
       "description": "Worried about expensive and curvy screen in your samsung? This is screen protector to your Galaxy Samsung S8.",
-      "price": "11.50"
+      "price": "11.50",
+      "subcategory": "tempered glass"
     },
     {
       "name": "Iphone SE Screen Protector",
       "description": "Keep your iPhone's SE screen fall resistant.",
-      "price": "5.50"
+      "price": "5.50",
+      "subcategory": "PET"
     },
     {
       "name": "Universal phone holder",
       "description": "It fits almost all phones between 4' and 6.5'.",
-      "price": "12.00"
+      "price": "12.00",
+      "subcategory": "glass holder"
     },
     {
       "name": "Long arm holder",
       "description": "This holder with long arm can be used at home or your car as well.",
-      "price": "11.50"
+      "price": "11.50",
+      "subcategory": "glass holder"
     },
     {
       "name": "Multi-port Powerbank Amber",
       "description": "Amber provides you 15000mAh for your daily mobile life. Amber is nicely designed with soft touch finish surface. Dual USB-A output ports that can charge 2 devices at once, or share it with friends.",
-      "price": "22.50"
+      "price": "22.50",
+      "subcategory": "multi-port"
     },
     {
       "name": "Big Capacity Curtis Power Bank",
       "description": "This charger has got 26800mAh capacity. You can charge your phone even 8 times. Excelent for long travels.",
-      "price": "7.99"
+      "price": "7.99",
+      "subcategory": "big capacity"
     },
     {
       "name": "Nylon Charging Cable",
       "description": "This replacement Micro-USB Data Cable in provides high-speed data transfer rates, while simultaneously charging your Micro-USB compatible phone through your computer's USB port.",
-      "price": "15.00"
+      "price": "15.00",
+      "subcategory": "nylon"
     },
     {
       "name": "Nomad Kevlar Lightning Cable",
       "description": "The entire Nomad collection of Lightning cables feature DuPont Kevlar K-29, both in the braiding and the inner core of the cable. The end result is a Lightning cable that boasts not only impressive durability but heat resistance and high tensile strength too. ",
-      "price": "35.00"
+      "price": "35.00",
+      "subcategory": "kevlar"
     },
     {
       "name": "Juice Lightning Wall Charger",
       "description": "The Juice Apple Lightning mains charger provides power for your Apple Lightning devices. Included is a mains charger with integrated 1.5m Apple Lightning cable. Plus a handy carry bag to keep your charger tidy when not in use.",
-      "price": "19.50"
+      "price": "19.50",
+      "subcategory": "iphone chargers"
     },
     {
       "name": "Belkin 10W Qi Wireless",
       "description": "Belkin 10W Qi Wireless Charger Pad with QC3 Plug - Black. Fast wireless charging up to 10 watts so you always safely get the fastest possible wireless charge. Just lay your phone onto the pad for a quick and easy power boost. Fast wireless charging for Qi-enabled devices up to 10W.",
-      "price": "19.50"
+      "price": "19.50",
+      "subcategory": "wireless chargers"
     },
     {
       "name": "USB Mains Charger",
       "description": "Keep your micro USB devices charged up and ready to use with this micro USB and mains charger. The USB socket on the mains is handy if you live with people that have different devices, if you fancy sharing.",
-      "price": "8.00"
+      "price": "8.00",
+      "subcategory": "USB-C chargers"
     }
   ]
 }
