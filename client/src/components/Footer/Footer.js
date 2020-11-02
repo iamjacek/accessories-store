@@ -5,7 +5,7 @@ const Footer = () => (
 <nav id="footer" className="bg-gray-700">
 
 {/* <!-- start container --> */}
-<div className="container mx-auto px-12 py-5 sm:py-6">
+<div className="container mx-auto px-12 py-8 sm:py-6">
 
     <div className="flex flex-wrap overflow-hidden sm:-mx-1 md:-mx-px lg:-mx-2 xl:-mx-2">
 
