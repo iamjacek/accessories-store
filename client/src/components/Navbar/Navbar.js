@@ -19,7 +19,7 @@ const Navbar = () => {
         c1.273,0,2.307-1.034,2.307-2.306V2.309C24.813,1.034,23.78,0,22.507,0z M23.085,25.672H8.599V3.895h14.486V25.672z M18.932,2.343
         h-6.181V1.669h6.182L18.932,2.343L18.932,2.343z M21.577,2.035c0,0.326-0.266,0.59-0.591,0.59c-0.326,0-0.591-0.265-0.591-0.59
         s0.265-0.59,0.591-0.59C21.312,1.444,21.577,1.709,21.577,2.035z M18.655,29.225h-5.629v-1.732h5.629V29.225z"/></svg>
-        <span className="font-semibold text-xl tracking-tight transform -translate-x-8 -translate-y-1">A ccessories</span>
+        <span className="font-semibold text-xl tracking-tight transform -translate-x-8 -translate-y-1 whitespace-pre-wrap tracking-wide">A{` `}CCEESSORIES</span>
       </NavLink>
       <div className="block sm:hidden">
         <button onClick={toggleMobileMenu} className="flex items-center px-3 py-2 border rounded text-orange-100 border-orange-100 hover:text-white hover:border-white">
