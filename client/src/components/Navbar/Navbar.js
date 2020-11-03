@@ -25,7 +25,7 @@ const Navbar = () => {
         <button onClick={toggleMobileMenu} className="flex items-center px-3 py-2 border rounded text-orange-100 border-orange-100 hover:text-white hover:border-white">
           { isMenuOpen &&
           <div className="w-3 h-3">
-              <img src={x} className="fill-current"/>
+              <img src={x} className="fill-current" alt="close icon"/>
           </div>
 
             
