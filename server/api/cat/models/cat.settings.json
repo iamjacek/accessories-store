@@ -28,8 +28,9 @@
       "plugin": "upload",
       "required": false
     },
-    "products": {
-      "collection": "category"
+    "items": {
+      "via": "cat",
+      "collection": "item"
     }
   }
 }

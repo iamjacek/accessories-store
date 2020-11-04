@@ -10,6 +10,7 @@ import Signup from './components/Signup';
 import Checkout from './components/Checkout';
 import Navbar from './components/Navbar/Navbar'
 import Footer from './components/Footer/Footer'
+import Items from './components/Items'
 
 import { ApolloClient, InMemoryCache } from '@apollo/client';
 import { ApolloProvider } from '@apollo/client';
@@ -31,6 +32,7 @@ const Root = () => (
         <Route component={Signin} path="/signin" />
         <Route component={Signup} path="/signup" />
         <Route component={Checkout} path="/checkout" />
+        <Route component={Items} path="/:id" />
       </Switch>
       <Footer />
     </ApolloProvider>

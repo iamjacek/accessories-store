@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom"
 import search from '../assets/search.svg'
+import Spinner from './Spinner'
 
 import './App.css';
 import { useQuery, gql } from '@apollo/client';
@@ -35,7 +36,7 @@ function App () {
   // }, [loading, data])
 
   if (loading) return (<main className="container mx-auto px-4 sm:px-8 flex-grow max-w-full">
-    <p>Loading...</p>
+    <Spinner />
     </main>)
   if (error) return (<main className="container mx-auto px-4 sm:px-8 flex-grow max-w-full">
     <p>Error :(</p>

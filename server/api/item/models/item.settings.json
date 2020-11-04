@@ -1,8 +1,8 @@
 {
   "kind": "collectionType",
-  "collectionName": "categories",
+  "collectionName": "items",
   "info": {
-    "name": "Product",
+    "name": "Item",
     "description": ""
   },
   "options": {
@@ -33,6 +33,10 @@
       ],
       "plugin": "upload",
       "required": false
+    },
+    "cat": {
+      "model": "cat",
+      "via": "items"
     }
   }
 }
