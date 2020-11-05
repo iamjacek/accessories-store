@@ -37,7 +37,7 @@ const Items = (props) => {
   if (error) return (<main className="container mx-auto px-4 sm:px-8 flex-grow max-w-full">
     <p>Error :(</p>
     </main>)
-    console.log(data)
+
     return (
         
          // Container
@@ -48,7 +48,7 @@ const Items = (props) => {
     {/* Categories */}
     <div className="flex flex-col justify-center mb-4 text-center">
       {/* Header */}
-    <h1 className="text-4xl my-6 font-bold text-gray-700">Available products in {data.cat.name}</h1>
+    <h1 className="text-4xl my-6 font-bold text-gray-700">{data.cat.name}</h1>
 
       {/* SEARCH */}
     {/* <div className="mb-4 flex flex-row content-center justify-center w-64 mx-auto transform -translate-x-2">
@@ -58,20 +58,24 @@ const Items = (props) => {
 
       <div className="flex flex-wrap justify-center mb-6 mx-auto" style={{maxWidth: "1920px"}}>
         {data.cat.items.map((item) => (
-          <Link className="max-w-sm rounded overflow-hidden shadow-lg my-8 mx-3 text-left hover:shadow-2xl transition-shadow duration-200" key={item._id} to={`/${item._id}`} >
-            <img className="w-full h-56 object-cover" src={`${apiUrl}${item.image.url}`} alt={item.image.name} />
-            <div className="px-6 py-5">
-              <div className="flex flex-col sm:flex-row justify-between content-center">
-                <h2 className="text-2xl text-gray-900 font-bold mb-0 sm:mb-1 pb-2 sm:pb-2"> {item.name} </h2>
-                <span className="text-xl text-orange-500 font-bold mb-2 pt-0 sm:pt-1">{`Shop now >`}</span>
+          <Link className="max-w-xs rounded overflow-hidden shadow-lg my-8 mx-3 text-left hover:shadow-2xl transition-shadow duration-200" key={item._id} to={`/${item._id}`} >
+            <img className="w-full h-48 object-cover" src={`${apiUrl}${item.image.url}`} alt={item.image.name} />
+            <div className="flex flex-col card-content">
+            <div className="px-6 py-5 flex flex-grow flex-col">
+              <div className="flex flex-col justify-between content-center">
+                <h2 className="text-2xl text-gray-900 font-bold mb-0 pb-1 leading-7"> {item.name} </h2>
+                
               </div>
               
-              <p className="text-gray-700 leading-7"> {item.description} </p>
-              
+              <p className="flex text-gray-700 text-sm leading-5 pt-2"> {item.description} </p>
+              <span className="text-sm text-orange-500 font-bold mb-2 pt-2 ">{`Buy >`}</span>
             </div>
-            <div class="px-6 pt-4 pb-2">
-        <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">{item.subcategory}</span>
+            
+            <div className="px-6 pt-4 pb-2 flex">
+                <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">{item.subcategory}</span>
             </div>
+            </div>
+            
             
           </Link>
         ))}

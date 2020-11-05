@@ -22790,6 +22790,10 @@ video {
   animation: spinner 1.5s linear infinite;
 }
 
+.card-content {
+  height: 17rem;
+}
+
 @-webkit-keyframes spinner {
   0% {
     -webkit-transform: rotate(0deg);

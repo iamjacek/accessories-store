@@ -72,15 +72,15 @@ function App () {
 
         <div className="flex flex-wrap justify-center mb-6 mx-auto" style={{maxWidth: "1920px"}}>
           {filteredCats(searchTerm).map((cat) => (
-            <Link className="max-w-sm rounded overflow-hidden shadow-lg my-8 mx-3 text-left hover:shadow-2xl transition-shadow duration-200" key={cat._id} to={`/${cat._id}`} >
-              <img className="w-full h-56 object-cover" src={`${apiUrl}${cat.image.url}`} alt={cat.image.name} />
+            <Link className="max-w-xs rounded overflow-hidden shadow-lg my-8 mx-3 text-left hover:shadow-2xl transition-shadow duration-200" key={cat._id} to={`/${cat._id}`} >
+              <img className="w-full h-48 object-cover" src={`${apiUrl}${cat.image.url}`} alt={cat.image.name} />
               <div className="px-6 py-5">
-                <div className="flex flex-col sm:flex-row justify-between content-center">
-                  <h2 className="text-2xl text-gray-900 font-bold mb-0 sm:mb-1 pb-2 sm:pb-2"> {cat.name} </h2>
-                  <span className="text-xl text-orange-500 font-bold mb-2 pt-0 sm:pt-1">{`Shop now >`}</span>
+                <div className="flex flex-col justify-between content-center">
+                  <h2 className="text-2xl text-gray-900 font-bold mb-0 pb-1 leading-7"> {cat.name} </h2>
+                  <span className="text-sm text-orange-500 font-bold mb-2 pt-0 ">{`Shop now >`}</span>
                 </div>
                 
-                <p className="text-gray-700 leading-7"> {cat.description} </p>
+                <p className="text-gray-700 text-sm leading-5"> {cat.description} </p>
                 
               </div>
               {/* <div class="px-6 pt-4 pb-2">
