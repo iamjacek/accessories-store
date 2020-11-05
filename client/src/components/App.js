@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom"
 import search from '../assets/search.svg'
 import Spinner from './Spinner'
+import { filteredCats } from './utils'
 
 import './App.css';
 import { useQuery, gql } from '@apollo/client';
@@ -46,12 +47,6 @@ function App () {
     setSearchTerm(event.target.value)
   }
 
-  const filteredCats = ( searchTerm ) => {
-    return data.cats.filter(cat => {
-      return cat.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      cat.description.toLowerCase().includes(searchTerm.toLowerCase())
-    })
-  }
 
   return (
     // Container
@@ -65,13 +60,13 @@ function App () {
         <h1 className="text-4xl my-6 font-bold text-gray-700">CATEGORIES</h1>
 
         {/* SEARCH */}
-      <div className="mb-4 flex flex-row content-center justify-center w-64 mx-auto transform -translate-x-2">
+        <div className=" flex flex-row content-center justify-center self-center transform -translate-x-2">
         <img src={search} alt="search icon" className="h-4 mt-3 transform translate-x-8"/>
         <input className="shadow appearance-none border rounded w-full py-2 pl-10 pr-3 text-gray-700 text-lg leading-tight focus:outline-none focus:shadow-outline" type="search" placeholder="Search" value={searchTerm} onChange={handleChange}/>
       </div>
 
         <div className="flex flex-wrap justify-center mb-6 mx-auto" style={{maxWidth: "1920px"}}>
-          {filteredCats(searchTerm).map((cat) => (
+          {filteredCats(searchTerm, data.cats).map((cat) => (
             <Link className="max-w-xs rounded overflow-hidden shadow-lg my-8 mx-3 text-left hover:shadow-2xl transition-shadow duration-200" key={cat._id} to={`/${cat._id}`} >
               <img className="w-full h-48 object-cover" src={`${apiUrl}${cat.image.url}`} alt={cat.image.name} />
               <div className="px-6 py-5">
