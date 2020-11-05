@@ -60,9 +60,9 @@ const Items = (props) => {
       {/* Header */}
       <h1 className="text-4xl my-6 font-bold text-gray-700">{data.cat.name.toUpperCase()}</h1>
 
-      <div className="flex flex-row justify-around content-center mb-4">
+      <div className="flex flex-col-reverse sm:flex-row justify-around content-center mb-4">
         
-        <button className="whitespace-pre-wrap shadow appearance-none border rounded bg-transparent hover:bg-gray-100 text-md leading-none text-gray-500 font-semibold px-4 py-2 border rounded">
+        <button className="whitespace-pre-wrap shadow appearance-none border rounded bg-transparent hover:bg-gray-100 text-md leading-none text-gray-500 font-semibold px-4 py-2 border rounded mt-6 sm:mt-0 w-24 mx-auto sm:mx-0">
          <Link to="/">{`<   Back`}</Link> 
         </button>
         {/* SEARCH */}
