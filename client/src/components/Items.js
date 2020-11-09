@@ -35,6 +35,7 @@ const Items = (props) => {
     }, [])
 
     const [searchTerm, setSearchTerm] = useState('')
+    const [cartItems, setCartItem] = useState([])
     const {loading, error, data } = useQuery(ITEMS)
 
     const handleChange = (event) => {
@@ -101,8 +102,29 @@ const Items = (props) => {
           </Link>
         ))}
       </div>
-    
     </div>
+    {/* USER CART */}
+
+    <div className="mt-2 ml-8">
+        <div className="bg-gray-200">
+          <div className="flex flex-col align-center p-2">
+            <h2>Your Cart</h2>
+              <p className="text-orange-500">{cartItems.length} items selected</p>
+              <div className="flex align-center justify-center flex-col">
+                <div className="m-2">
+                  {cartItems.length === 0 && (
+                    <p className="text-red">Please add some items</p>
+                  )}
+                </div>
+                <p>Total: $3.99</p>
+                <p>
+                  <Link to="/checkout">Checkout</Link>
+                </p>
+              </div>
+          </div>
+        </div>
+    </div>
+
   </main>
     )
 }
