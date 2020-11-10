@@ -49,6 +49,28 @@ const Items = (props) => {
     <p>Error :(</p>
     </main>)
 
+    const addToCart = (item) => {
+      const alreadyInCart = cartItems.findIndex( cartItem => cartItem._id === item._id)
+
+      if (alreadyInCart === -1){
+        const updatedItems = cartItems.concat({
+          ...item,
+          quantity: 1
+        })
+        setCartItem(updatedItems)
+      } else {
+        const updatedItems = [...cartItems]
+        updatedItems[alreadyInCart].quantity += 1
+        setCartItem(updatedItems)
+      }
+    }
+
+    const inTheBasket = () => {
+      let sum = 0
+      cartItems.map(item => sum += item.quantity)
+      return sum
+    }
+
     return (
         
          // Container
@@ -79,7 +101,7 @@ const Items = (props) => {
 
       <div className="flex flex-wrap justify-center mb-6 mx-auto" style={{maxWidth: "1920px"}}>
         {filteredCats(searchTerm, data.cat.items).map((item) => (
-          <Link className="max-w-xs rounded overflow-hidden shadow-lg my-8 mx-3 text-left hover:shadow-2xl transition-shadow duration-200" key={item._id} to={`/${item._id}`} >
+          <div className="max-w-xs rounded overflow-hidden shadow-lg my-8 mx-3 text-left hover:shadow-2xl transition-shadow duration-200" key={item._id} to={`/${item._id}`} >
             <img className="w-full h-48 object-cover" src={`${apiUrl}${item.image.url}`} alt={item.image.name} />
             <div className="flex flex-col">
             <div className="px-6 py-5 flex flex-grow flex-col">
@@ -92,28 +114,31 @@ const Items = (props) => {
             </div>
               
               <p className="flex text-gray-700 text-sm leading-5 pt-2"> {item.description} </p>
-              <span className="text-sm text-orange-500 font-bold mb-2 pt-2 ">{`Buy >`}</span>
+              
+              <button onClick={() => addToCart(item)} className="mt-4 mb-1 bg-orange-500 hover:bg-orange-400 text-white font-bold py-2 px-4 border-b-4 border-gray-700 hover:border-gray-600 rounded">
+              {`Add to basket`}
+              </button>
             </div>
             
             
             </div>
             
             
-          </Link>
+          </div>
         ))}
       </div>
     </div>
-    {/* USER CART */}
+    {/* USER BASKET */}
 
     <div className="mt-2 ml-8">
         <div className="bg-gray-200">
           <div className="flex flex-col align-center p-2">
-            <h2>Your Cart</h2>
-              <p className="text-orange-500">{cartItems.length} items selected</p>
+            <h2>Your Basket</h2>
+              <p className="text-orange-500">{inTheBasket()} items selected</p>
               <div className="flex align-center justify-center flex-col">
                 <div className="m-2">
                   {cartItems.length === 0 && (
-                    <p className="text-red">Please add some items</p>
+                    <p className="text-red-700">Please add some items</p>
                   )}
                 </div>
                 <p>Total: $3.99</p>
