@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { useQuery, gql } from '@apollo/client';
 import Spinner from './Spinner'
 import search from '../assets/search.svg'
-import { filteredCats } from './utils'
+import { filteredCats, calculatePrice, getBasket, setBasket } from './utils'
 
 import { Link } from "react-router-dom"
 
@@ -30,13 +30,22 @@ const Items = (props) => {
       }
 `
     //just to scroll to the top each time user clicked category
-    useEffect(() => {
-      window.scrollTo({top:0,behavior:'smooth'})
-    }, [])
+   
+
+  
 
     const [searchTerm, setSearchTerm] = useState('')
     const [cartItems, setCartItem] = useState([])
     const {loading, error, data } = useQuery(ITEMS)
+
+    useEffect(() => {
+      window.scrollTo({top:0,behavior:'smooth'})
+      setCartItem(getBasket())
+    }, [])
+
+    useEffect(()=> {
+      setBasket(cartItems)
+    }, [cartItems])
 
     const handleChange = (event) => {
       setSearchTerm(event.target.value)
@@ -69,6 +78,11 @@ const Items = (props) => {
       let sum = 0
       cartItems.map(item => sum += item.quantity)
       return sum
+    }
+
+    const deleteItemFromBasket = (itemToDeleteId) => {
+      const updatedItems = cartItems.filter(item => item._id !== itemToDeleteId)
+      setCartItem(updatedItems)
     }
 
     return (
@@ -114,6 +128,9 @@ const Items = (props) => {
             </div>
               
               <p className="flex text-gray-700 text-sm leading-5 pt-2"> {item.description} </p>
+              <p className="flex text-gray-700 text-2xl leading-5 pt-4 pb-1 font-bold">
+                £{item.price}
+              </p>
               
               <button onClick={() => addToCart(item)} className="mt-4 mb-1 bg-orange-500 hover:bg-orange-400 text-white font-bold py-2 px-4 border-b-4 border-gray-700 hover:border-gray-600 rounded">
               {`Add to basket`}
@@ -130,18 +147,28 @@ const Items = (props) => {
     </div>
     {/* USER BASKET */}
 
+    
+
     <div className="mt-2 ml-8">
         <div className="bg-gray-200">
           <div className="flex flex-col align-center p-2">
             <h2>Your Basket</h2>
               <p className="text-orange-500">{inTheBasket()} items selected</p>
               <div className="flex align-center justify-center flex-col">
-                <div className="m-2">
+                <div className="my-2">
                   {cartItems.length === 0 && (
                     <p className="text-red-700">Please add some items</p>
                   )}
                 </div>
-                <p>Total: $3.99</p>
+                {cartItems.map(item=> (
+                  <div key={item._id} className="flex align-center mb-2">
+                    <p>
+                {item.name} x {item.quantity} - ${(item.quantity * item.price).toFixed(2)} <span onClick={() => deleteItemFromBasket(item._id)} className="cursor-pointer text-red-700 font-bold text-bold text-2xl whitespace-pre-wrap">{` `}&#x2715;</span>
+                    </p>
+                    
+                  </div>
+                ))}
+                <p>Total: {calculatePrice(cartItems)}</p>
                 <p>
                   <Link to="/checkout">Checkout</Link>
                 </p>
