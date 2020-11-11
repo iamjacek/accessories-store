@@ -115,24 +115,24 @@ const Items = (props) => {
 
       <div className="flex flex-wrap justify-center mb-6 mx-auto" style={{maxWidth: "1920px"}}>
         {filteredCats(searchTerm, data.cat.items).map((item) => (
-          <div className="max-w-xs rounded overflow-hidden shadow-lg my-8 mx-3 text-left hover:shadow-2xl transition-shadow duration-200" key={item._id} to={`/${item._id}`} >
+          <div className="w-64 flex flex-col rounded overflow-hidden my-8 mx-3 text-center transition-shadow duration-200" key={item._id} to={`/${item._id}`} >
             <img className="w-full h-48 object-cover" src={`${apiUrl}${item.image.url}`} alt={item.image.name} />
-            <div className="flex flex-col">
-            <div className="px-6 py-5 flex flex-grow flex-col">
-              <div className="flex flex-col justify-between content-center mb-2">
-                <h2 className="text-2xl text-gray-900 font-bold mb-0 pb-1 leading-7"> {item.name} </h2>
+            <div className="flex flex-col flex-grow">
+            <div className="px-6 py-3 flex flex-col flex-grow">
+              <div className="flex flex-col justify-between content-center">
+                <h2 className="text-lg text-gray-900 font-bold mb-0 leading-7"> {item.name} </h2>
                 
               </div>
-              <div className="flex py-1">
+              {/* <div className="flex py-1">
                 <span className="inline-block bg-gray-200 rounded-full px-8 py-1 text-sm font-semibold text-gray-700">{item.subcategory}</span>
-            </div>
+            </div> */}
               
-              <p className="flex text-gray-700 text-sm leading-5 pt-2"> {item.description} </p>
-              <p className="flex text-gray-700 text-2xl leading-5 pt-4 pb-1 font-bold">
+              <p className="flex justify-center text-gray-700 text-sm leading-5 pt-0 flex-grow">★★★★★</p>
+              <p className="flex justify-center text-gray-900 text-lg leading-5 pt-1 font-bold">
                 £{item.price}
               </p>
               
-              <button onClick={() => addToCart(item)} className="mt-4 mb-1 bg-orange-500 hover:bg-orange-400 text-white font-bold py-2 px-4 border-b-4 border-gray-700 hover:border-gray-600 rounded">
+              <button onClick={() => addToCart(item)} className="mt-2 mb-1 bg-orange-500 hover:bg-orange-400 text-white font-bold py-2 px-4 border-b-4 border-gray-700 hover:border-gray-600 rounded">
               {`Add to basket`}
               </button>
             </div>
