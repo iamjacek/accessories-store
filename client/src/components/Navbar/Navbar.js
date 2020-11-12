@@ -12,8 +12,8 @@ const Navbar = () => {
   }
 
   return (
-    <nav className="flex items-center flex-wrap justify-between bg-gray-700 p-6">
-      
+    <nav className=" bg-gray-700 p-6">
+      <div className="container mx-auto flex items-center flex-wrap justify-between">
       <NavLink to="/" className="flex items-center flex-shrink-0 text-white mr-6 pt-1">
         <svg className="fill-current h-10 w-9" width="47" height="47" viewBox="0 0 35 35" xmlns="http://www.w3.org/2000/svg"><path d="M22.507,0H9.175C7.9,0,6.87,1.034,6.87,2.309v27.07c0,1.271,1.03,2.306,2.305,2.306h13.332
         c1.273,0,2.307-1.034,2.307-2.306V2.309C24.813,1.034,23.78,0,22.507,0z M23.085,25.672H8.599V3.895h14.486V25.672z M18.932,2.343
@@ -49,7 +49,9 @@ const Navbar = () => {
             <NavLink to='/signup' activeClassName="text-orange-500 border-orange-500" className="inline-block mt-5 text-md px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-gray-700 hover:bg-orange-500 mt-4 sm:mt-0">Sign up</NavLink>
         </div>
       </div>
-      <MobileMenu isOpen={isMenuOpen} />
+      <MobileMenu isOpen={isMenuOpen} toggleX={toggleMobileMenu}/>
+      </div>
+      
     </nav>
   )
 }
