@@ -22794,6 +22794,11 @@ video {
   height: 17rem;
 }
 
+.center-absolute {
+  left: 50%;
+  transform: translateX(-50%);
+}
+
 @-webkit-keyframes spinner {
   0% {
     -webkit-transform: rotate(0deg);

@@ -7,6 +7,10 @@ module.exports = {
       'public/**/*.html',
     ],
     theme: {
+      inset: {
+        '1/4': '25%',
+        '1/2': '50%',
+      },
       extend: {},
     },
     variants: {},

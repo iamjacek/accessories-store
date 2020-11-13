@@ -11,6 +11,10 @@
   .card-content {
     height: 17rem;
   }
+  .center-absolute {
+    left: 50%;
+    transform: translateX(-50%);
+  }
 
   @-webkit-keyframes spinner {
     0% {
