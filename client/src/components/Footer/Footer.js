@@ -2,7 +2,7 @@ import React from 'react'
 import { NavLink } from 'react-router-dom'
 
 const Footer = () => (
-<nav id="footer" className="bg-gray-700">
+<footer id="footer" className="bg-gray-700">
 
 {/* <!-- start container --> */}
 <div className="container mx-auto px-12 py-8 sm:py-6">
@@ -82,7 +82,7 @@ const Footer = () => (
 
 
 
-</nav>
+</footer>
 )
         
 

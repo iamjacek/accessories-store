@@ -127,7 +127,7 @@ const Items = (props) => {
                 <span className="inline-block bg-gray-200 rounded-full px-8 py-1 text-sm font-semibold text-gray-700">{item.subcategory}</span>
             </div> */}
               
-              <p className="flex justify-center text-gray-700 text-sm leading-5 pt-0 flex-grow">★★★★★</p>
+              <p className="flex justify-center text-gray-700 text-sm leading-5 pt-0">★★★★★</p>
               <p className="flex justify-center text-gray-900 text-lg leading-5 pt-1 font-bold">
                 £{item.price}
               </p>

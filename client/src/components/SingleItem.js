@@ -1,6 +1,7 @@
 import React from 'react'
 import { useQuery, gql } from '@apollo/client';
 import Spinner from './Spinner'
+import { Link } from "react-router-dom"
 
 const apiUrl = process.env.API_URL || 'http://localhost:1337'
 
@@ -19,6 +20,7 @@ const SingleItem = (props) => {
             }
             cat {
             name
+            _id
             }
         }
         }
@@ -35,31 +37,46 @@ const SingleItem = (props) => {
     console.log(data);
     const { name, description, price, image, subcategory, cat } = data.item
     return (
-        <div className="flex flex-grow content-center my-10 w-1/2 mx-auto">
-            {/* IMAGE */}
-            <div className="flex justify-center items-center w-1/2 p-4">
-                <img className="w-full object-cover align-center" src={`${apiUrl}${image.url}`} alt={image.name}/>
+        <main className="flex flex-col content-center flex-grow">
+            <div className="text-center mt-12">
+            <button className="whitespace-pre-wrap shadow appearance-none border rounded bg-transparent hover:bg-gray-100 text-md leading-none text-gray-500 font-semibold px-4 py-2 border rounded mt-6 sm:mt-0 w-24 mx-auto sm:mx-0">
+            <Link to={`/product/${cat._id}`}>{`<   Back`}</Link> 
+            </button>
+            
+            </div>
+            
+            <div className="flex flex-col sm:flex-row  content-center my-10 w-full sm:w-4/5 md:w-4/6 lg:w-1/2 mx-auto">
+                
+                
+                
+                {/* IMAGE */}
+                <div className="flex justify-center items-center w-1/2 p-4">
+                    <img className="w-64 h-64 object-cover align-center" src={`${apiUrl}${image.url}`} alt={image.name}/>
+                    
+                </div>
+                {/* DESCRIPTION */}
+                <div className="flex flex-col justify-center content-center w-1/2 p-4">
+                    <h1 className="text-2xl mb-1 font-bold leading-6 text-gray-700">{name}</h1>
+                    <div className="flex flex-wrap flex-row justify-between items-center">
+                    <p className="text-gray-700 content-center text-sm mb-2">★★★★★</p>
+                    <p className="text-orange-500 text-2xl leading-7 p-2 w-24 text-center rounded-2xl font-black my-1">
+                    £{price}
+                </p>
+                    </div>
+                
+                
+                <p className="flex justify-center text-gray-700 text-md leading-6 py-1">{description}</p>
+                <span className="my-1 text-sm font-semibold text-gray-500">Type: {subcategory}</span>
+                
+                
+                
+                <button  className="mt-2 mb-1 bg-orange-500 hover:bg-orange-400 text-white font-bold py-2 px-4 border-b-4 border-gray-700 hover:border-gray-600 rounded">
+                {`Add to basket`}
+                </button>
+                </div>
                 
             </div>
-             {/* DESCRIPTION */}
-            <div className="flex flex-col justify-center content-center w-1/2 p-4">
-                <h1 className="text-4xl my-6 font-bold text-gray-700">{name}</h1>
-               
-                <span className="inline-block bg-gray-200 rounded-full px-8 py-1 text-sm font-semibold text-gray-700">{subcategory}</span>
-            
-              
-              <p className="flex justify-center text-gray-700 text-sm leading-5 pt-0 flex-grow">★★★★★</p>
-              <p className="flex justify-center text-gray-900 text-lg leading-5 pt-1">{description}</p>
-              <p className="flex justify-center text-gray-900 text-lg leading-5 pt-1 font-bold">
-                £{price}
-              </p>
-              
-              <button  className="mt-2 mb-1 bg-orange-500 hover:bg-orange-400 text-white font-bold py-2 px-4 border-b-4 border-gray-700 hover:border-gray-600 rounded">
-              {`Add to basket`}
-              </button>
-            </div>
-            
-        </div>
+        </main>
     )
 }
 
