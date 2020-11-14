@@ -67,7 +67,7 @@ function App () {
 
         <div className="flex flex-wrap justify-center mb-6 mx-auto" style={{maxWidth: "1920px"}}>
           {filteredCats(searchTerm, data.cats).map((cat) => (
-            <Link className="w-64 rounded overflow-hidden shadow-lg my-8 mx-3 text-left hover:shadow-2xl transition-shadow duration-200" key={cat._id} to={`/${cat._id}`} >
+            <Link className="w-64 rounded overflow-hidden shadow-lg my-8 mx-3 text-left hover:shadow-2xl transition-shadow duration-200" key={cat._id} to={`/product/${cat._id}`}>
               <img className="w-full h-48 object-cover" src={`${apiUrl}${cat.image.url}`} alt={cat.image.name} />
               <div className="px-6 pt-3 pb-2">
                 <div className="flex flex-col justify-between content-center">

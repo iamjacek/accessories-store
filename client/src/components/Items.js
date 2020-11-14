@@ -115,7 +115,7 @@ const Items = (props) => {
 
       <div className="flex flex-wrap justify-center mb-6 mx-auto" style={{maxWidth: "1920px"}}>
         {filteredCats(searchTerm, data.cat.items).map((item) => (
-          <div className="w-64 flex flex-col rounded overflow-hidden my-8 mx-3 text-center transition-shadow duration-200" key={item._id} to={`/${item._id}`} >
+          <Link className="w-64 flex flex-col rounded overflow-hidden my-8 mx-3 text-center transition-shadow duration-200" key={item._id} to={`/item/${item._id}/${item.name}`} >
             <img className="w-full h-48 object-cover" src={`${apiUrl}${item.image.url}`} alt={item.image.name} />
             <div className="flex flex-col flex-grow">
             <div className="px-6 py-3 flex flex-col flex-grow">
@@ -141,7 +141,7 @@ const Items = (props) => {
             </div>
             
             
-          </div>
+          </Link>
         ))}
       </div>
     </div>
