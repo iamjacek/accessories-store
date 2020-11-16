@@ -22799,6 +22799,10 @@ video {
   transform: translateX(-50%);
 }
 
+.w-128 {
+  width: 32rem;
+}
+
 @-webkit-keyframes spinner {
   0% {
     -webkit-transform: rotate(0deg);

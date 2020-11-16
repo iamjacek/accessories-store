@@ -11,7 +11,12 @@ module.exports = {
         '1/4': '25%',
         '1/2': '50%',
       },
-      extend: {},
+      extend: {
+        spacing: {
+          '96': '24rem',
+          '128': '32rem',
+        }
+      },
     },
     variants: {},
     plugins: [],

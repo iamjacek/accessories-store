@@ -28,13 +28,6 @@ function App () {
   const {loading, error, data } = useQuery(CATS)
   const [searchTerm, setSearchTerm] = useState('')
 
-  //get data into state if u need later
-  // const [categories, setCategories] = useState()
-  // useEffect(() => {
-  //   if(loading === false && data){
-  //     setCategories(data);
-  //   }
-  // }, [loading, data])
 
   if (loading) return (<main className="container mx-auto px-4 sm:px-8 flex-grow max-w-full">
     <Spinner />
@@ -57,12 +50,12 @@ function App () {
       {/* Categories */}
       <div className="flex flex-col justify-center mb-4 text-center">
         {/* Header */}
-        <h1 className="text-4xl my-6 font-bold text-gray-700">CATEGORIES</h1>
+        <h1 className="text-3xl my-6 font-bold text-gray-700">CATEGORIES</h1>
 
         {/* SEARCH */}
-        <div className=" flex flex-row content-center justify-center self-center transform -translate-x-2">
-        <img src={search} alt="search icon" className="h-4 mt-3 transform translate-x-8"/>
-        <input className="shadow appearance-none border rounded w-full py-2 pl-10 pr-3 text-gray-700 text-lg leading-tight focus:outline-none focus:shadow-outline" type="search" placeholder="Search" value={searchTerm} onChange={handleChange}/>
+        <div className="flex flex-row content-center justify-center self-center transform -translate-x-2">
+        <img src={search} alt="search icon" className="h-4 mt-2 transform translate-x-6"/>
+        <input className="h-8 text-sm shadow appearance-none border rounded w-full py-2 pl-8 pr-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="search" placeholder="Search" value={searchTerm} onChange={handleChange}/>
       </div>
 
         <div className="flex flex-wrap justify-center mb-6 mx-auto" style={{maxWidth: "1920px"}}>
@@ -75,14 +68,9 @@ function App () {
                   <span className="text-sm text-orange-500 font-bold mb-2 pt-0 ">{`Shop now >`}</span>
                 </div>
                 
-                {/* <p className="text-gray-700 text-sm leading-5"> {cat.description} </p> */}
                 
               </div>
-              {/* <div class="px-6 pt-4 pb-2">
-                <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#photography</span>
-                <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#travel</span>
-                <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#winter</span>
-              </div> */}
+              
               
             </Link>
           ))}
