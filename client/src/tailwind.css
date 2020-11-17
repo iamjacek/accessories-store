@@ -16,7 +16,7 @@
     transform: translateX(-50%);
   }
   .w-128 {
-    width: 32rem;
+    min-width: 16rem;
   }
 
   @-webkit-keyframes spinner {

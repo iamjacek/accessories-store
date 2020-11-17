@@ -36,13 +36,8 @@ const Items = ({parentCallback, ...props}) => {
     const {loading, error, data } = useQuery(ITEMS)
 
     const handleClick = (item) => {
-     
       parentCallback(item)
     }
-
-    // useEffect(() => {
-    //   if (itemToAdd) console.log(itemToAdd)
-    // }, [itemToAdd])
 
     const handleChange = (event) => {
       setSearchTerm(event.target.value)
@@ -76,7 +71,7 @@ const Items = ({parentCallback, ...props}) => {
         {/* SEARCH */}
         <div className=" flex flex-row content-center justify-center self-center transform -translate-x-2">
         <img src={search} alt="search icon" className="h-4 mt-2 transform translate-x-6"/>
-        <input className="h-8 text-sm shadow appearance-none border rounded w-full py-2 pl-8 pr-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="search" placeholder="Search" value={searchTerm} onChange={handleChange}/>
+        <input className="text-sm shadow appearance-none border rounded w-full py-2 pl-8 pr-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="search" placeholder="Search" value={searchTerm} onChange={handleChange}/>
       </div>
 
       </div>

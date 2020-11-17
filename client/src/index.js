@@ -27,20 +27,17 @@ const client = new ApolloClient({
 
 
 
+let counter = 1
+const Root = () => {
 
-const Root = (props) => {
 
-
-
+  
   const [newItem, setnewItem] = useState(0)
-
   const callback = (item) => {
-    setnewItem(item)
+    setnewItem({item, counter})
+     counter++
   }
-  // useEffect(() => {
-  //   // if (newItemToAdd) setnewItem(newItemToAdd)
-  //   console.log(props.itemToAdd);
-  // })
+
 return (
   <Router>
     <ApolloProvider client={client}>
