@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { calculatePrice, getBasket, setBasket } from '../utils'
+import { calculatePrice, getBasket, setBasket } from '../../utils'
 import { Link } from "react-router-dom"
 
 
@@ -41,6 +41,7 @@ const Basket = ({ toAdd }) => {
       //get basket from props
       useEffect(() => {
         if (toAdd.item) addToCart(toAdd.item)
+        // eslint-disable-next-line react-hooks/exhaustive-deps
       }, [toAdd])
 
       const inTheBasket = () => {
@@ -56,7 +57,7 @@ const Basket = ({ toAdd }) => {
 
       
     return (
-        <div className="mt-6 mx-8 w-128 mx-auto">
+        <div className="mt-6 mx-4 w-128 mx-auto">
         <div className="bg-gray-200 rounded">
           <div className="flex flex-col align-center px-2 py-4">
             <h2 className="flex justify-center text-3xl font-extrabold py-1 text-gray-700">Your Basket</h2>

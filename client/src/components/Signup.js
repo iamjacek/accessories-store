@@ -1,7 +1,10 @@
 import React, { useState } from 'react'
 import Alert from './Alert'
+import axios from 'axios';
 
-const Signup = () => {
+import { setToken } from '../utils'
+
+const Signup = (props) => {
 
     const [inputValues, setInputValues] = useState({
         username: '',
@@ -11,6 +14,7 @@ const Signup = () => {
 
     const [alert, setAlert] = useState(false)
     const [alertMessage, setAllertMessage] = useState('')
+    const [loading, setLoading] = useState(false)
 
     const handleChange = (event) => {
         const { name, value } = event.target
@@ -20,13 +24,38 @@ const Signup = () => {
         })
     }
 
+    const redirectUser = path => {
+        props.history.push(path)
+    }
+
     const handleSubmit = event => {
         event.preventDefault()
         if (isFormEmpty()){
             showAlert('Please fill all fields')
             return
         }
-        console.log('submitted')
+        setLoading(true)
+        axios
+            .post('http://localhost:1337/auth/local/register', {
+                username: inputValues.username,
+                email: inputValues.email,
+                password: inputValues.password,
+            })
+            .then(response => {
+                // Handle success.
+                setLoading(false)
+                setToken(response.data.jwt)
+                // console.log('Well done!');
+                // console.log('User profile', response.data.user);
+                // console.log('User token', response.data.jwt);
+                redirectUser('/')
+            })
+            .catch(error => {
+                // Handle error.
+                showAlert(error.response)
+                console.log('An error occurred:', error.response);
+                setLoading(false)
+            });
     }
 
     const isFormEmpty = () => {
@@ -44,10 +73,11 @@ const Signup = () => {
     }
 
     return(
-            <div className="container flex-grow mx-auto text-center">
+            <div className="flex justify-center flex-grow w-full text-center">
                 {/* SIGN UP */}
 
-                <form className="relative max-w-xl flex flex-col mx-auto bg-gray-200 p-8 my-12 rounded-lg" onSubmit={handleSubmit}>
+                <form className="relative mx-4 w-full sm:max-w-screen-sm md:max-w-screen-md flex flex-col bg-gray-200 py-8 px-4 my-12 rounded-lg" onSubmit={handleSubmit}>
+                <Alert show={alert} message={alertMessage}/>
                     <div className="mb-2 flex flex-col align-center">
                         <h1 className="text-4xl font-bold text-gray-700">Get Started!</h1>
                         <p className="text-sm mt-0 mb-4 text-gray-700">Sign up to order phone accessories!</p>
@@ -66,8 +96,8 @@ const Signup = () => {
                        <input className="w-full text-md text-gray-700 p-2 mb-2" id="password" type="password" name="password" placeholder="your password" onChange={handleChange} /> 
                     </label>
                     
-                    <button type="submit" className="mt-6 mb-1 bg-orange-500 hover:bg-orange-400 text-white font-bold py-2 px-8 border-b-4 border-gray-700 hover:border-gray-600 rounded">Submit</button>
-                    <Alert show={alert} message={alertMessage}/>
+                    <button type="submit" disabled={loading} className="mt-6 mb-1 bg-orange-500 hover:bg-orange-400 text-white font-bold py-2 px-8 border-b-4 border-gray-700 hover:border-gray-600 rounded">Submit</button>
+                    
                 </form>
                 
             </div>

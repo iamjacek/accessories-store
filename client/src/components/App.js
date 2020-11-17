@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom"
 import search from '../assets/search.svg'
 import Spinner from './Spinner'
-import { filteredCats } from './utils'
+import { filteredCats } from '../utils'
 
 import './App.css';
 import { useQuery, gql } from '@apollo/client';

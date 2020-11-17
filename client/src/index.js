@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import './index.css';
@@ -52,7 +52,9 @@ return (
           <Items {...props} parentCallback={callback} />
         )} />
        
-        <Route component={SingleItem} path="/item/:id/:name" />
+        <Route path="/item/:id/:name" render={(props) => (
+          <SingleItem {...props} parentCallback={callback}/>
+        )}/>
       </Switch>
       <Footer />
     </ApolloProvider>

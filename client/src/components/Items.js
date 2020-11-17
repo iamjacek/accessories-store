@@ -1,9 +1,8 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { useQuery, gql } from '@apollo/client';
 import Spinner from './Spinner'
-import Basket from './Basket/Basket'
 import search from '../assets/search.svg'
-import { filteredCats } from './utils'
+import { filteredCats } from '../utils'
 
 import { Link } from "react-router-dom"
 

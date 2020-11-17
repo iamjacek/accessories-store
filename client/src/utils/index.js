@@ -1,4 +1,5 @@
 const BASKET_KEY = "basket"
+const TOKEN_KEY = "jwt"
 
 
 
@@ -25,4 +26,12 @@ export const filteredCats = ( searchTerm, data ) => {
       return JSON.parse(localStorage.getItem(basketKey))
     }
     return []
+  }
+
+  // AUTHORISATION
+
+  export const setToken = (value, tokenKey = TOKEN_KEY) => {
+    if (localStorage) {
+      localStorage.setItem(tokenKey, JSON.stringify(value))
+    }
   }

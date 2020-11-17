@@ -5,7 +5,7 @@ import { Link } from "react-router-dom"
 
 const apiUrl = process.env.API_URL || 'http://localhost:1337'
 
-const SingleItem = (props) => {
+const SingleItem = ({parentCallback, ...props}) => {
 
     const ITEM =gql`
         query{
@@ -28,6 +28,10 @@ const SingleItem = (props) => {
 
     const {loading, error, data } = useQuery(ITEM)
     
+    const handleClick = (item) => {
+        parentCallback(item)
+      }
+
     if (loading) return (<main className="container mx-auto px-4 sm:px-8 flex-grow max-w-full">
     <Spinner />
     </main>)
@@ -74,7 +78,7 @@ const SingleItem = (props) => {
                 
                 
                 <div className="flex flex-row">
-                <button  className="w-full mx-1 mt-2 mb-1 bg-orange-500 hover:bg-orange-400 text-white font-bold py-2 px-4 border-b-4 border-gray-700 hover:border-gray-600 rounded">
+                <button onClick={() => handleClick(data.item)} className="w-full mx-1 mt-2 mb-1 bg-orange-500 hover:bg-orange-400 text-white font-bold py-2 px-4 border-b-4 border-gray-700 hover:border-gray-600 rounded">
                 {`Add to basket`}
                 </button>
                 <button  className="w-full mx-1 mt-2 mb-1 bg-orange-500 hover:bg-orange-400 text-white font-bold py-2 px-4 border-b-4 border-gray-700 hover:border-gray-600 rounded">
