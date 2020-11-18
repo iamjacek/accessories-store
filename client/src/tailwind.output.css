@@ -22803,6 +22803,11 @@ video {
   min-width: 16rem;
 }
 
+.button__hover {
+  color: #ed8936;
+  border: solid 1px #ed8936;
+}
+
 @-webkit-keyframes spinner {
   0% {
     -webkit-transform: rotate(0deg);

@@ -28,10 +28,31 @@ export const filteredCats = ( searchTerm, data ) => {
     return []
   }
 
+  export const clearBasket = (basketKey = BASKET_KEY) => {
+    if (localStorage) {
+      localStorage.removeItem(basketKey)
+    }
+  }
+
   // AUTHORISATION
 
   export const setToken = (value, tokenKey = TOKEN_KEY) => {
     if (localStorage) {
       localStorage.setItem(tokenKey, JSON.stringify(value))
+    }
+  }
+
+  export const getToken = (tokenKey = TOKEN_KEY) => {
+    console.log(localStorage=== null)
+    if (localStorage && localStorage.getItem(tokenKey)){
+      console.log("get token utility function inside")
+      return JSON.parse(localStorage.getItem(tokenKey))
+    }
+    return null
+  }
+
+  export const clearToken = (tokenKey = TOKEN_KEY) => {
+    if (localStorage) {
+      localStorage.removeItem(tokenKey)
     }
   }
