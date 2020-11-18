@@ -30,36 +30,34 @@ const client = new ApolloClient({
 let counter = 1
 const Root = () => {
 
-
-  
   const [newItem, setnewItem] = useState(0)
-  const callback = (item) => {
+  const sendBasketItems = (item) => {
     setnewItem({item, counter})
      counter++
   }
 
-return (
-  <Router>
-    <ApolloProvider client={client}>
-      <Navbar />
-      <Basket toAdd={newItem}/>
-      <Switch>
-        <Route component={App} exact path="/" />
-        <Route component={Signin} path="/signin" />
-        <Route component={Signup} path="/signup" />
-        <Route component={Checkout} path="/checkout" />
-        <Route  path="/product/:id"  render={(props) => (
-          <Items {...props} parentCallback={callback} />
-        )} />
-       
-        <Route path="/item/:id/:name" render={(props) => (
-          <SingleItem {...props} parentCallback={callback}/>
-        )}/>
-      </Switch>
-      <Footer />
-    </ApolloProvider>
-  </Router>
- )
+  return (
+    <Router>
+      <ApolloProvider client={client}>
+        <Navbar />
+        <Basket toAdd={newItem} />
+        <Switch>
+          <Route component={App} exact path="/" />
+          <Route component={Signin} path="/signin" />
+          <Route component={Signup} path="/signup" />
+          <Route component={Checkout} path="/checkout" />
+          <Route  path="/product/:id"  render={(props) => (
+            <Items {...props} passNewBasketItems={sendBasketItems} />
+          )} />
+        
+          <Route path="/item/:id/:name" render={(props) => (
+            <SingleItem {...props} passNewBasketItems={sendBasketItems}/>
+          )}/>
+        </Switch>
+        <Footer />
+      </ApolloProvider>
+    </Router>
+  )
 }
 
 

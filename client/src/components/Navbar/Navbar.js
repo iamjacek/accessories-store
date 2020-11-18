@@ -10,7 +10,8 @@ const Navbar = (props) => {
     clearToken()
     clearBasket()
     props.history.push('/')
-    // window.location.reload();
+    //clear basket
+    window.location.reload();
   }
   
     return (getToken() !== null ? 

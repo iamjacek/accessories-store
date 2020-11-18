@@ -8,7 +8,7 @@ import { Link } from "react-router-dom"
 
 const apiUrl = process.env.API_URL || 'http://localhost:1337'
 
-const Items = ({parentCallback, ...props}) => {
+const Items = ({passNewBasketItems, ...props}) => {
 
     const ITEMS = gql`
     query{
@@ -24,7 +24,6 @@ const Items = ({parentCallback, ...props}) => {
             image{
               url
             }
-            
           }
         }
       }
@@ -35,7 +34,7 @@ const Items = ({parentCallback, ...props}) => {
     const {loading, error, data } = useQuery(ITEMS)
 
     const handleClick = (item) => {
-      parentCallback(item)
+      passNewBasketItems(item)
     }
 
     const handleChange = (event) => {

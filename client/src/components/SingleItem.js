@@ -5,7 +5,7 @@ import { Link } from "react-router-dom"
 
 const apiUrl = process.env.API_URL || 'http://localhost:1337'
 
-const SingleItem = ({parentCallback, ...props}) => {
+const SingleItem = ({passNewBasketItems, ...props}) => {
 
     const ITEM =gql`
         query{
@@ -29,7 +29,7 @@ const SingleItem = ({parentCallback, ...props}) => {
     const {loading, error, data } = useQuery(ITEM)
     
     const handleClick = (item) => {
-        parentCallback(item)
+        passNewBasketItems(item)
       }
 
     if (loading) return (<main className="container mx-auto px-4 sm:px-8 flex-grow max-w-full">
@@ -53,7 +53,7 @@ const SingleItem = ({parentCallback, ...props}) => {
             
             </div>
             
-            <div className="flex flex-col sm:flex-row content-center my-10 w-full sm:w-4/5 md:w-4/6 lg:w-1/2 mx-auto">
+            <div className="flex flex-col sm:flex-row content-center my-10 w-full lg:w-4/5 xl:w-4/6 mx-auto px-0 sm:px-4 md:px-12">
                 
                 
                 
@@ -63,7 +63,7 @@ const SingleItem = ({parentCallback, ...props}) => {
                     
                 </div>
                 {/* DESCRIPTION */}
-                <div className="flex flex-col justify-center content-center w-full sm:w-1/2 py-4 px-10 sm:px-4">
+                <div className="flex flex-col justify-center content-center w-full sm:w-1/2  py-4 px-8 sm:px-4">
                     <h1 className="text-2xl mb-1 font-bold leading-6 text-gray-700">{name}</h1>
                     <div className="flex flex-wrap flex-row justify-between items-center">
                     <p className="text-gray-700 content-center text-sm mb-2">★★★★★</p>

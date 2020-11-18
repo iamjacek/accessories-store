@@ -68,7 +68,7 @@ const Basket = ({ toAdd }) => {
                   )}
                 </div>
                 {basketItems.map(item => (
-                  <div key={item._id} className="flex align-center mb-2 px-2 py-1 rounded-lg bg-gray-100">
+                  <div key={item._id} className="flex align-center mb-2 px-4 py-1 rounded-lg bg-gray-100">
                     <p className="text-gray-900 text-md">
                 {item.name} x {item.quantity} - <span className="font-semibold">${(item.quantity * item.price).toFixed(2)}</span> <span onClick={() => deleteItemFromBasket(item._id)} className="cursor-pointer text-red-700 font-bold text-bold text-2xl whitespace-pre-wrap">{` `}&#x2715;</span>
                     </p>
