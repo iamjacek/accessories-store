@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom'
 import './index.css';
 import './tailwind.output.css'
 import reportWebVitals from './reportWebVitals';
+import { getToken } from './utils'
+
 import App from './components/App';
 import Signin from './components/Signin';
 import Signup from './components/Signup';
@@ -24,8 +26,14 @@ const client = new ApolloClient({
   cache: new InMemoryCache()
 });
 
-
-
+const PrivateRoute = ({ component: Component, ...rest}) => (
+  <Route {... rest} render={props => (
+    getToken() !== null ?
+    <Component {...props} /> : <Redirect to={{
+      pathname: '/signin',
+    }} />
+  )}/>
+)
 
 let counter = 1
 const Root = () => {
@@ -45,7 +53,7 @@ const Root = () => {
           <Route component={App} exact path="/" />
           <Route component={Signin} path="/signin" />
           <Route component={Signup} path="/signup" />
-          <Route component={Checkout} path="/checkout" />
+          <PrivateRoute component={Checkout} path="/checkout" />
           <Route  path="/product/:id"  render={(props) => (
             <Items {...props} passNewBasketItems={sendBasketItems} />
           )} />
