@@ -4,17 +4,18 @@ import MobileMenu from '../MobileMenu/MobileMenu'
 import x from '../../assets/cancel.svg'
 import { getToken, clearBasket, clearToken } from '../../utils'
 
-class Navbar extends React.Component  {
+const Navbar = (props) => {
 
-  handleSignout = () => {
+  const handleSignout = () => {
     clearToken()
     clearBasket()
-    this.props.history.push('/')
+    props.history.push('/')
+    // window.location.reload();
   }
-  render(){
+  
     return (getToken() !== null ? 
-    <AuthNav handleSignout={this.handleSignout} /> : <UnAuthNav />)
-  }
+    <AuthNav handleSignout={handleSignout} /> : <UnAuthNav />)
+  
 }
 
 const AuthNav = ({ handleSignout }) => {

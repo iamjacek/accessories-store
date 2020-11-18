@@ -25,10 +25,8 @@ const Basket = ({ toAdd }) => {
           setBasketItems(updatedItems)
         }
       }
-        
     }
 
-    
       useEffect(() => {
         setBasketItems(getBasket())
       }, [])
@@ -54,6 +52,7 @@ const Basket = ({ toAdd }) => {
         const updatedItems = basketItems.filter(item => item._id !== itemToDeleteId)
         setBasketItems(updatedItems)
       }
+      
 
       
     return (
