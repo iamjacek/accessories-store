@@ -24,6 +24,10 @@
     border: solid 1px #ed8936;
   }
 
+  .top-half {
+    top: 50%;
+  }
+
   @-webkit-keyframes spinner {
     0% {
       -webkit-transform: rotate(0deg);

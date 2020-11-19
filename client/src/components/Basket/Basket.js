@@ -68,10 +68,10 @@ const Basket = ({ toAdd }) => {
                   )}
                 </div>
                 {basketItems.map(item => (
-                  <div key={item._id} className="flex align-center mb-2 px-4 py-1 rounded-lg bg-gray-100">
-                    <p className="text-gray-900 text-md">
-                {item.name} x {item.quantity} - <span className="font-semibold">${(item.quantity * item.price).toFixed(2)}</span> <span onClick={() => deleteItemFromBasket(item._id)} className="cursor-pointer text-red-700 font-bold text-bold text-2xl whitespace-pre-wrap">{` `}&#x2715;</span>
-                    </p>
+                  <div key={item._id} className="flex content-center justify-between mb-2 px-4 py-0 rounded-lg bg-gray-100">
+               
+                <div className="text-gray-800 text-md flex self-center">{item.name} x {item.quantity} - <span className="text-gray-700 text-md font-semibold">${(item.quantity * item.price).toFixed(2)}</span></div><span onClick={() => deleteItemFromBasket(item._id)} className="ml-4 cursor-pointer text-red-700 font-bold text-bold text-2xl whitespace-pre-wrap">{` `}&#x2715;</span>
+                
                     
                   </div>
                 ))}
