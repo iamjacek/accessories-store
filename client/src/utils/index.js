@@ -43,9 +43,9 @@ export const filteredCats = ( searchTerm, data ) => {
   }
 
   export const getToken = (tokenKey = TOKEN_KEY) => {
-    console.log(localStorage=== null)
+    
     if (localStorage && localStorage.getItem(tokenKey)){
-      console.log("get token utility function inside")
+      
       return JSON.parse(localStorage.getItem(tokenKey))
     }
     return null

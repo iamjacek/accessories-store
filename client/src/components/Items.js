@@ -59,7 +59,7 @@ const Items = ({passNewBasketItems, ...props}) => {
     {/* Categories */}
     <div className="flex flex-col justify-center mb-4 text-center">
       {/* Header */}
-      <h1 className="text-3xl my-6 font-bold text-gray-700">{data.cat.name.toUpperCase()}</h1>
+      <h1 className="text-3xl my-6 font-extrabold text-gray-700">{data.cat.name.toUpperCase()}</h1>
 
       <div className="flex flex-col-reverse sm:flex-row justify-around content-center mb-4">
         

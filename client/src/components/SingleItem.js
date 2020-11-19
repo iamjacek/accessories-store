@@ -2,6 +2,7 @@ import React from 'react'
 import { useQuery, gql } from '@apollo/client';
 import Spinner from './Spinner'
 import { Link } from "react-router-dom"
+import basketIcon from '../assets/shopping-cart.svg'
 
 const apiUrl = process.env.API_URL || 'http://localhost:1337'
 
@@ -82,7 +83,7 @@ const SingleItem = ({passNewBasketItems, ...props}) => {
                 {`Add to basket`}
                 </button>
                 <button  className="w-full mx-1 mt-2 mb-1 bg-orange-500 hover:bg-orange-400 text-white font-bold py-2 px-4 border-b-4 border-gray-700 hover:border-gray-600 rounded">
-                {`Buy`}
+                <span className="flex flex-row justify-center items-center"><img className="h-6 pr-4" src={basketIcon} alt="basket"/>Buy</span>
                 </button>
                 </div>
                

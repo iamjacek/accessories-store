@@ -3,8 +3,11 @@ import { NavLink, withRouter } from 'react-router-dom'
 import MobileMenu from '../MobileMenu/MobileMenu'
 import x from '../../assets/cancel.svg'
 import { getToken, clearBasket, clearToken } from '../../utils'
+import basketIcon from '../../assets/shopping-cart.svg'
 
 const Navbar = (props) => {
+
+
 
   const handleSignout = () => {
     clearToken()
@@ -15,16 +18,22 @@ const Navbar = (props) => {
   }
   
     return (getToken() !== null ? 
-    <AuthNav handleSignout={handleSignout} /> : <UnAuthNav />)
+    <AuthNav handleSignout={handleSignout}  /> : <UnAuthNav />)
   
 }
 
+
+
 const AuthNav = ({ handleSignout }) => {
+  
+
   const [isMenuOpen, setMenuState] = useState(false)
 
   const toggleMobileMenu = () => {
     setMenuState(!isMenuOpen)
   }
+
+
 
   return (
     <nav className=" bg-gray-700 p-6">
@@ -53,11 +62,14 @@ const AuthNav = ({ handleSignout }) => {
       <div className="w-full hidden sm:block flex-grow sm:flex sm:items-center sm:w-auto sm:pl-1">
         <div className="sm:flex-grow">
           <NavLink to='/' exact activeClassName="text-orange-500" className="block text-md mt-4 sm:inline-block sm:mt-0 text-orange-100 hover:text-orange-500 mr-4">
-            Browse Categories
+            Categories
           </NavLink>
           
         </div>
-        <div>
+        <div className="flex flex-row justify-center items-center">
+          <button className="px-6 py-1 mx-2" >
+            <img src={basketIcon} alt="basket-trolley" className="h-6"></img>
+          </button>
             <NavLink to='/checkout' activeClassName="text-orange-500" className="block text-md mt-4 sm:inline-block sm:mt-0 text-orange-100 hover:text-orange-500 mr-4 active:text-xl">
               Checkout
             </NavLink>
@@ -106,11 +118,14 @@ const UnAuthNav = () => {
       <div className="w-full hidden sm:block flex-grow sm:flex sm:items-center sm:w-auto sm:pl-1">
         <div className="sm:flex-grow">
           <NavLink to='/' exact activeClassName="text-orange-500" className="block text-md mt-4 sm:inline-block sm:mt-0 text-orange-100 hover:text-orange-500 mr-4">
-            Browse Categories
+            Categories
           </NavLink>
           
         </div>
         <div>
+          <button className="px-6 py-1 mx-2" >
+            <img src={basketIcon} alt="basket-trolley" className="h-6"></img>
+          </button>
             <NavLink to='/signin' activeClassName="text-orange-500" className="block text-md mt-4 sm:inline-block sm:mt-0 text-orange-100 hover:text-orange-500 mr-4 active:text-xl">
               Sign in
             </NavLink>

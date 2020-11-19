@@ -44,6 +44,8 @@ const Root = () => {
      counter++
   }
 
+
+ 
   return (
     <Router>
       <ApolloProvider client={client}>
@@ -57,7 +59,6 @@ const Root = () => {
           <Route  path="/product/:id"  render={(props) => (
             <Items {...props} passNewBasketItems={sendBasketItems} />
           )} />
-        
           <Route path="/item/:id/:name" render={(props) => (
             <SingleItem {...props} passNewBasketItems={sendBasketItems}/>
           )}/>
