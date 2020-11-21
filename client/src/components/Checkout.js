@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react'
 import Alert from './Alert'
-import { getBasket } from '../utils'
-import { calculatePrice } from '../utils'
+import { calculatePrice, getBasket } from '../utils'
 import { Link } from "react-router-dom"
 import Spinner from './Spinner'
 
-const Checkout = () => {
+import { Elements, StripeProvider, CardElement, injectStripe } from 'react-stripe-elements'
 
+const _CheckoutForm = () => {
+ 
     const [inputValues, setInputValues] = useState({
         fullName: '',
         address: '',
@@ -24,7 +25,6 @@ const Checkout = () => {
    
 
     useEffect(() => {
-        console.log(localStorage);
         setBasketItems(getBasket())
     }, [])
 
@@ -127,6 +127,11 @@ const Checkout = () => {
                         Email (when we will send confirmation):
                        <input className="rounded w-full text-md text-gray-700 p-2 mb-2" id="confirmationEmail" type="email" name="confirmationEmail" placeholder="i.e. your@addres.com" onChange={handleChange} /> 
                     </label>
+                    {/* CREDIT CARD INPUT */}
+                    <label className="text-left text-gray-700 py-4">
+                        Debit/Credit Card:
+                        <CardElement id="stripe__input" onReady={input => input.focus()} />
+                       </label>
                     
                     <button type="submit" disabled={false} className="mt-10 mb-1 bg-orange-500 hover:bg-orange-400 text-white font-bold py-2 px-8 border-b-4 border-gray-700 hover:border-gray-600 rounded">Submit</button>
                     
@@ -187,6 +192,16 @@ const ConfirmationModal = ({orderProcessing, closeModal, handleSubmitOrder, bask
         </div> 
        
     </div>
+)
+
+const CheckoutForm = injectStripe(_CheckoutForm)
+
+const Checkout = () => (
+    <StripeProvider apiKey="pk_test_51HZcgAIP5TcR6XA3gYHb8uWkOI7S4zrZEFeTdXrRbMhyzZj3r7cxhFmDhuEUnScKoG9FHz3MQOcI6vHU7HGmXAfb00yJnhMRid">
+        <Elements>
+            <CheckoutForm />
+        </Elements>
+    </StripeProvider>
 )
 
 export default Checkout
