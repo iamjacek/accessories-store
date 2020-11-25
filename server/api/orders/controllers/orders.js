@@ -2,7 +2,7 @@
 
 
 const stripe = require("stripe")(
-  "sk_test_51HZcgAIP5TcR6XA3RCpd7y04spOo9PoaWkNa2X2W3Z3IiFwlXvcE06UHUmxiuoJZuEYOSYFl2Bchd4yPohy9FbUe00e1rn6FYd"
+  process.env.SK_STRIPE
 );
 
 /**
@@ -59,22 +59,24 @@ module.exports = {
 
 
       const {
+        token,
+        amount,
         fullName,
         address,
-        amount,
-        items,
         postCode,
-        token,
+        confirmationEmail,
         city,
+        items
       } = ctx.request.body;
 
 
 
     // Send charge to Stripe
     const charge = await stripe.charges.create({
+
       amount: amount * 100,
-      currency: "gpb",
-      description: `Order ${new Date(Date.now())} - User ${ctx.state.user._id}`,
+      currency: "gbp",
+      description: `Order ${new Date(Date.now())} - User ${ctx.state.user._id}, Name: ${fullName}, Address: ${address}`,
       source: token,
     });
 
@@ -86,6 +88,7 @@ module.exports = {
       amount,
       items,
       postCode,
+      confirmationEmail,
       city,
     });
 

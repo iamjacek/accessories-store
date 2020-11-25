@@ -14,6 +14,10 @@ export const filteredCats = ( searchTerm, data ) => {
     return `£${items.reduce((acc, item) => acc + item.quantity * item.price, 0 ).toFixed(2)}`
   }
 
+  export const calculateAmount = items => {
+    return Number(items.reduce((acc, item) => acc + item.quantity * item.price, 0 ).toFixed(2))
+  }
+
   // BASKET
   export const setBasket = (value, basketKey = BASKET_KEY) => {
     if (localStorage) {

@@ -1,12 +1,42 @@
 import React, { useState, useEffect } from 'react'
 import Alert from './Alert'
-import { calculatePrice, getBasket } from '../utils'
-import { Link } from "react-router-dom"
+import { calculatePrice, getBasket, clearBasket, calculateAmount, getToken } from '../utils'
+import { Link, withRouter } from "react-router-dom"
+
 import Spinner from './Spinner'
+import axios from 'axios';
 
-import { Elements, StripeProvider, CardElement, injectStripe } from 'react-stripe-elements'
+import { loadStripe } from '@stripe/stripe-js';
 
-const _CheckoutForm = () => {
+
+import { useStripe, useElements, Elements, CardElement } from '@stripe/react-stripe-js'
+
+const apiUrl = process.env.API_URL || "http://localhost:1337"
+const stripePromise = loadStripe('pk_test_51HZcgAIP5TcR6XA3gYHb8uWkOI7S4zrZEFeTdXrRbMhyzZj3r7cxhFmDhuEUnScKoG9FHz3MQOcI6vHU7HGmXAfb00yJnhMRid');
+
+const CARD_ELEMENT_OPTIONS = {
+    hidePostalCode: true,
+    style: {
+        base: {
+            color: '#303238',
+            fontSize: '16px',
+            fontFamily: '"Open Sans", sans-serif',
+            fontSmoothing: 'antialiased',
+            '::placeholder': {
+              color: '#CFD7DF',
+            },
+          },
+          invalid: {
+            color: '#e5424d',
+            ':focus': {
+              color: '#303238',
+            },
+          },
+    }
+    
+}
+
+const CheckoutForm = (props) => {
  
     const [inputValues, setInputValues] = useState({
         fullName: '',
@@ -22,7 +52,9 @@ const _CheckoutForm = () => {
     const [orderProcessing, setOrderProcessing] = useState(false)
     const [modal, setModal] = useState(false)
 
-   
+    const stripe = useStripe();
+    const elements = useElements();
+
 
     useEffect(() => {
         setBasketItems(getBasket())
@@ -60,14 +92,77 @@ const _CheckoutForm = () => {
         }, 4000);
     }
 
+    const stripeTokenHandler = async (tokenElement) => {
+        const {  fullName, address ,postCode, city, confirmationEmail } = inputValues
+        const amount = calculateAmount(basketItems)
+        const userToken = getToken()
+        const token = tokenElement.id
+
+        setOrderProcessing(true)
+
+        const options = {
+            url: `${apiUrl}/orders`,
+            method: 'POST',
+            headers: {
+                'Authorization': `Bearer ${userToken}`,
+            },
+            data: {
+                token,
+                fullName,
+                address,
+                amount,
+                postCode,
+                confirmationEmail,
+                city,
+                items: basketItems
+            }
+        }
+
+        axios(options)
+            .then(() => {
+                setOrderProcessing(false)
+                setModal(false) 
+                showAlert("Your order has been successfully submitted")
+                clearBasket()
+                props.history.push('/')
+                //clear basket
+                window.location.reload();
+            })
+            .catch(error => {
+                console.error('timeout exceeded')
+                setOrderProcessing(false)
+                setModal(false) 
+                showAlert(error)
+                console.log(error)
+            })
+      }
+
     const inTheBasket = () => {
         let sum = 0
         basketItems.map(item => sum += item.quantity)
         return sum
       }
 
-      const handleSubmitOrder = () => {
+      const handleSubmitOrder = async (props) => {
+        
+        //process order
+       
+        if (!stripe || !elements) {
+            console.log('stripe.js has not loaded yet');
+        
+            return;
+          }
 
+        const card = elements.getElement(CardElement);
+        const result = await stripe.createToken(card);
+        
+        if (result.error) {
+            showAlert(result.error.message)
+            console.log(result.error.message);
+          } else {
+            
+            stripeTokenHandler(result.token);
+          }
       }
 
       const closeModal = () => {
@@ -75,80 +170,82 @@ const _CheckoutForm = () => {
       }
 
     return (
-        <main className="flex flex-col justify-center items-center flex-grow w-full text-center">
-                {/* checkout */}
-                <div className="flex flex-col align-center">
-                        <h1 className="text-3xl my-6 font-extrabold text-gray-700">CHECKOUT</h1>
-                </div>
-                {basketItems.length > 0 ? <React.Fragment>
-                    <div className="align-center mx-4 sm:max-w-screen-sm md:max-w-screen-md flex flex-col bg-gray-200 py-8 px-4 md:px-12 rounded-lg">
-                        <p className="text-orange-500 flex justify-center font-semibold text-lg mb-4">{inTheBasket()} items for checkout</p>
+        
+            <main className="flex flex-col justify-center items-center flex-grow w-full text-center">
+                    {/* checkout */}
+                    <div className="flex flex-col align-center">
+                            <h1 className="text-3xl my-6 font-extrabold text-gray-700">CHECKOUT</h1>
+                    </div>
+                    {basketItems.length > 0 ? <React.Fragment>
+                        <div className="align-center mx-4 sm:max-w-screen-sm md:max-w-screen-md flex flex-col bg-gray-200 py-8 px-4 md:px-12 rounded-lg">
+                            <p className="text-orange-500 flex justify-center font-semibold text-lg mb-4">{inTheBasket()} items for checkout</p>
 
-                        <div className="flex justify-center flex-col">
-                        {basketItems.map(item => (
-                    <div key={item._id} className="flex content-center mb-2 px-4 py-1 rounded-lg">
-                        <div className="text-gray-700 text-md flex content-center justify-between">
-                            <div>
-                                {item.name} x {item.quantity} - 
+                            <div className="flex justify-center flex-col">
+                            {basketItems.map(item => (
+                        <div key={item._id} className="flex content-center mb-2 px-4 py-1 rounded-lg">
+                            <div className="text-gray-700 text-md flex content-center justify-between">
+                                <div>
+                                    {item.name} x {item.quantity} - 
+                                </div>
+                                <span className="text-gray-800 font-semibold">
+                                    ${(item.quantity * item.price).toFixed(2)}
+                                </span> 
                             </div>
-                            <span className="text-gray-800 font-semibold">
-                                ${(item.quantity * item.price).toFixed(2)}
-                            </span> 
+                            
+                        </div>))}
                         </div>
+
+                            <p className="flex justify-center text-2xl font-extrabold py-1 text-red-700">Total: {calculatePrice(basketItems)}</p>
                         
-                    </div>))}
-                    </div>
+                        </div>
 
-                        <p className="flex justify-center text-2xl font-extrabold py-1 text-red-700">Total: {calculatePrice(basketItems)}</p>
-                    
-                    </div>
+                        <form className="align-center mx-4 sm:max-w-screen-sm md:max-w-screen-md flex flex-col bg-gray-200 py-8 px-4 md:px-12 my-12 rounded-lg" onSubmit={handleConfirmOrder}>
+                    <Alert show={alert} message={alertMessage}/>
+                        
+                        {/* INPUT */}
+                        <label className="text-left text-gray-700">
+                            Full name:
+                            <input className="rounded w-full text-md text-gray-700 p-2 mb-2" id="fullName" type="text" name="fullName" placeholder="i.e. John Smith" onChange={handleChange} />
+                        </label>
+                        <label className="text-left text-gray-700">
+                            Shipping address:
+                            <input className="rounded w-full text-md text-gray-700 p-2 mb-2" id="address" type="text" name="address" placeholder="i.e. 22 London Avenue" onChange={handleChange} />
+                        </label>
+                        <label className="text-left text-gray-700">
+                            Post Code:
+                            <input className="rounded w-full text-md text-gray-700 p-2 mb-2" id="postCode" type="text" name="postCode" placeholder="i.e. L16 2NP" onChange={handleChange} />    
+                        </label>
+                        <label className="text-left text-gray-700">
+                            City:
+                        <input className="rounded w-full text-md text-gray-700 p-2 mb-2" id="city" type="text" name="city" placeholder="i.e. London" onChange={handleChange} /> 
+                        </label>
+                        <label className="text-left text-gray-700">
+                            Email (when we will send confirmation):
+                        <input className="rounded w-full text-md text-gray-700 p-2 mb-2" id="confirmationEmail" type="email" name="confirmationEmail" placeholder="i.e. your@addres.com" onChange={handleChange} /> 
+                        </label>
+                        {/* CREDIT CARD INPUT */}
+                        <label className="text-left text-gray-700 py-4">
+                            Debit/Credit Card:
+                            <CardElement id="stripe__input" onReady={input => input.focus()} options={CARD_ELEMENT_OPTIONS} />
+                        </label>
+                        
+                        <button type="submit"  disabled={!stripe && orderProcessing} className="mt-10 mb-1 bg-orange-500 hover:bg-orange-400 text-white font-bold py-2 px-8 border-b-4 border-gray-700 hover:border-gray-600 rounded">Submit</button>
+                        
+                    </form>
+                    </React.Fragment> : (
+                        <div className="my-12 align-center mx-4 sm:max-w-screen-sm md:max-w-screen-md flex flex-col bg-gray-200 py-8 px-4 md:px-12 rounded-lg">
+                            <h2 className="text-xl my-2 font-extrabold text-red-700">Your basket is empty</h2>
+                            <p className="text-sm my-1 text-gray-600">Add some accessories!</p>
+                            <Link to="/" className="mt-10 mb-1 bg-orange-500 hover:bg-orange-400 text-white font-bold py-2 px-8 border-b-4 border-gray-700 hover:border-gray-600 rounded">Browse</Link>
+                        </div>
+                    ) } 
 
-                    <form className="align-center mx-4 sm:max-w-screen-sm md:max-w-screen-md flex flex-col bg-gray-200 py-8 px-4 md:px-12 my-12 rounded-lg" onSubmit={handleConfirmOrder}>
-                <Alert show={alert} message={alertMessage}/>
-                    
-                    {/* INPUT */}
-                    <label className="text-left text-gray-700">
-                        Full name:
-                        <input className="rounded w-full text-md text-gray-700 p-2 mb-2" id="fullName" type="text" name="fullName" placeholder="i.e. John Smith" onChange={handleChange} />
-                    </label>
-                    <label className="text-left text-gray-700">
-                        Shipping address:
-                        <input className="rounded w-full text-md text-gray-700 p-2 mb-2" id="address" type="text" name="address" placeholder="i.e. 22 London Avenue" onChange={handleChange} />
-                    </label>
-                    <label className="text-left text-gray-700">
-                        Post Code:
-                        <input className="rounded w-full text-md text-gray-700 p-2 mb-2" id="postCode" type="text" name="postCode" placeholder="i.e. L16 2NP" onChange={handleChange} />    
-                    </label>
-                    <label className="text-left text-gray-700">
-                        City:
-                       <input className="rounded w-full text-md text-gray-700 p-2 mb-2" id="city" type="text" name="city" placeholder="i.e. London" onChange={handleChange} /> 
-                    </label>
-                    <label className="text-left text-gray-700">
-                        Email (when we will send confirmation):
-                       <input className="rounded w-full text-md text-gray-700 p-2 mb-2" id="confirmationEmail" type="email" name="confirmationEmail" placeholder="i.e. your@addres.com" onChange={handleChange} /> 
-                    </label>
-                    {/* CREDIT CARD INPUT */}
-                    <label className="text-left text-gray-700 py-4">
-                        Debit/Credit Card:
-                        <CardElement id="stripe__input" onReady={input => input.focus()} />
-                       </label>
-                    
-                    <button type="submit" disabled={false} className="mt-10 mb-1 bg-orange-500 hover:bg-orange-400 text-white font-bold py-2 px-8 border-b-4 border-gray-700 hover:border-gray-600 rounded">Submit</button>
-                    
-                </form>
-                </React.Fragment> : (
-                    <div className="my-12 align-center mx-4 sm:max-w-screen-sm md:max-w-screen-md flex flex-col bg-gray-200 py-8 px-4 md:px-12 rounded-lg">
-                        <h2 className="text-xl my-2 font-extrabold text-red-700">Your basket is empty</h2>
-                        <p className="text-sm my-1 text-gray-600">Add some accessories!</p>
-                        <Link to="/" type="submit" className="mt-10 mb-1 bg-orange-500 hover:bg-orange-400 text-white font-bold py-2 px-8 border-b-4 border-gray-700 hover:border-gray-600 rounded">Browse</Link>
-                    </div>
-                ) } 
-
-                {/* CONFIRMATION MODAL */}
-                {modal && (
-                    <ConfirmationModal basketItems={basketItems} orderProcessing={orderProcessing} closeModal={closeModal} handleSubmitOrder={handleSubmitOrder} />
-                )}
+                    {/* CONFIRMATION MODAL */}
+                    {modal && (
+                        <ConfirmationModal basketItems={basketItems} orderProcessing={orderProcessing} closeModal={closeModal} handleSubmitOrder={handleSubmitOrder} />
+                    )}
             </main>
+       
     )
 }
 
@@ -194,14 +291,10 @@ const ConfirmationModal = ({orderProcessing, closeModal, handleSubmitOrder, bask
     </div>
 )
 
-const CheckoutForm = injectStripe(_CheckoutForm)
-
-const Checkout = () => (
-    <StripeProvider apiKey="pk_test_51HZcgAIP5TcR6XA3gYHb8uWkOI7S4zrZEFeTdXrRbMhyzZj3r7cxhFmDhuEUnScKoG9FHz3MQOcI6vHU7HGmXAfb00yJnhMRid">
-        <Elements>
-            <CheckoutForm />
-        </Elements>
-    </StripeProvider>
+const Checkout = (props) => (
+    <Elements stripe={stripePromise} >
+        <CheckoutForm {...props}/>
+    </Elements>
 )
 
-export default Checkout
+export default withRouter(Checkout)

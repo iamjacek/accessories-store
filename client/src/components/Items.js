@@ -44,7 +44,7 @@ const Items = ({passNewBasketItems, ...props}) => {
     if (loading) return (<main className="container mx-auto px-4 sm:px-8 flex-grow max-w-full">
     <Spinner />
     </main>)
-  if (error) return (<main className="container mx-auto px-4 sm:px-8 flex-grow max-w-full">
+  if (error) return (<main className="container mx-auto px-4 sm:px-8 flex-grow max-w-full p-12">
     <p>Error :(</p>
     </main>)
 
