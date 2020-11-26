@@ -38,6 +38,11 @@ const PrivateRoute = ({ component: Component, ...rest}) => (
 let counter = 1
 const Root = () => {
 
+  const [isBasketOpen, setIsBasketOpen] = useState(false)
+  const sendBasketOpen = () => {
+    setIsBasketOpen(!isBasketOpen)
+  }
+
   const [newItem, setnewItem] = useState(0)
   const sendBasketItems = (item) => {
     setnewItem({item, counter})
@@ -49,8 +54,8 @@ const Root = () => {
   return (
     <Router>
       <ApolloProvider client={client}>
-        <Navbar />
-        <Basket toAdd={newItem} />
+        <Navbar basketOpenInfo={sendBasketOpen}/>
+        <Basket toAdd={newItem} basketOpen={isBasketOpen}/>
         <Switch>
           <Route component={App} exact path="/" />
           <Route component={Signin} path="/signin" />

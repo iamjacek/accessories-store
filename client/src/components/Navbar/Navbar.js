@@ -6,9 +6,11 @@ import { getToken, clearBasket, clearToken } from '../../utils'
 import basketIcon from '../../assets/shopping-cart.svg'
 import line from '../../assets/logo-line.svg'
 
-const Navbar = (props) => {
+const Navbar = ({ basketOpenInfo, ...props }) => {
 
-
+  const toggleBasket = () => {
+    basketOpenInfo()
+  }
 
   const handleSignout = () => {
     clearToken()
@@ -19,14 +21,17 @@ const Navbar = (props) => {
   }
   
     return (getToken() !== null ? 
-    <AuthNav handleSignout={handleSignout}  /> : <UnAuthNav />)
+    <AuthNav handleSignout={handleSignout} basketOpen={toggleBasket} /> : <UnAuthNav />)
   
 }
 
 
 
-const AuthNav = ({ handleSignout }) => {
+const AuthNav = ({ handleSignout, basketOpen }) => {
   
+  const toggleBasket = () => {
+    basketOpen()
+  }
 
   const [isMenuOpen, setMenuState] = useState(false)
 
@@ -46,7 +51,7 @@ const AuthNav = ({ handleSignout }) => {
           <span className="font-racing text-5xl tracking-wide text-purple-600 text-shadow">line</span>
         </div>
         
-        <p className="text-sm text-gray-600 text-shadow-md transform -translate-y-2 tracking-wide">Selected phone accessories</p>
+        <p className="text-sm text-gray-600 text-shadow-md transform -translate-y-3 tracking-wide">Selected phone accessories</p>
       </NavLink>
       <div className="block sm:hidden">
         <button onClick={toggleMobileMenu} className="flex items-center px-3 py-2 border rounded text-orange-100 border-orange-100 hover:text-white hover:border-white">
@@ -70,7 +75,7 @@ const AuthNav = ({ handleSignout }) => {
           
         </div>
         <div className="flex flex-row justify-center items-center">
-          <button className="px-6 py-1 mx-2">
+          <button className="px-6 py-1 mx-2" onClick={toggleBasket}>
             <img src={basketIcon} alt="basket-trolley" className="h-6"></img>
           </button>
             <NavLink to='/checkout' activeClassName="italic" className="block text-md mt-4 sm:inline-block sm:mt-0 text-gray-700 hover:text-purple-600 mr-4 active:text-xl">
@@ -94,7 +99,7 @@ const UnAuthNav = () => {
     setMenuState(!isMenuOpen)
   }
 
-  return (
+  return ( 
     <nav className="bg-white py-4 px-12">
       <div className="container mx-auto flex items-center flex-wrap justify-between">
       <NavLink to="/" className="flex flex-col items-center flex-shrink-0 text-white mr-6 -mt-10 -mb-2">
@@ -104,7 +109,7 @@ const UnAuthNav = () => {
           <span className="font-racing text-5xl tracking-wide text-purple-600 text-shadow">line</span>
         </div>
         
-        <p className="text-sm text-gray-600 text-shadow-md transform -translate-y-2 tracking-wide">Selected phone accessories</p>
+        <p className="text-sm text-gray-600 text-shadow-md transform -translate-y-3 tracking-wide">Selected phone accessories</p>
       </NavLink>
       <div className="block sm:hidden">
         <button onClick={toggleMobileMenu} className="flex items-center px-3 py-2 border rounded text-orange-100 border-orange-100 hover:text-white hover:border-white">
@@ -132,7 +137,7 @@ const UnAuthNav = () => {
             <NavLink to='/signin' activeClassName="text-orange-500" className="block text-md mt-4 sm:inline-block sm:mt-0 text-gray-700 hover:text-purple-600 mr-4 active:text-xl">
               Sign in
             </NavLink>
-            <NavLink to='/signup' className="bg-purple-600 inline-block mt-5 text-md px-8 py-2 leading-none border rounded-full text-white hover:bg-purple-500 mt-4 sm:mt-0">Sign up</NavLink>
+            <NavLink to='/signup' className="bg-purple-600 inline-block mt-5 text-md px-8 py-2 leading-none border rounded-full text-white hover:bg-purple-500 mt-4 sm:mt-0 shadow">Sign up</NavLink>
         </div>
       </div>
       <MobileMenu isOpen={isMenuOpen} toggleX={toggleMobileMenu}/>

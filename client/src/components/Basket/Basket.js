@@ -4,7 +4,7 @@ import { Link } from "react-router-dom"
 
 
 
-const Basket = ({ toAdd }) => {
+const Basket = ({ toAdd, basketOpen }) => {
 
     const [basketItems, setBasketItems] = useState([])
     
@@ -56,11 +56,13 @@ const Basket = ({ toAdd }) => {
 
       
     return (
-        <div className="mt-6 mx-4 w-128 mx-auto">
-        <div className="bg-gray-200 rounded">
+        <div className={ basketOpen ? 
+        "absolute z-50 w-full transition-opacity duration-200 top-24 right-0 left-0" : 
+        "absolute opacity-0 z-50 w-full transition-opacity duration-200 top-24 right-0 left-0 transform -translate-x-full" }>
+        <div className="bg-white border border-4 border-gray-700 rounded-3xl mx-4 sm:mx-12 mt-4 py-4">
           <div className="flex flex-col align-center px-2 py-4">
-            <h2 className="flex justify-center text-3xl font-extrabold py-1 text-gray-700">Your Basket</h2>
-              <p className="text-orange-500 flex justify-center font-semibold text-lg">{inTheBasket()} items selected</p>
+            <h2 className="flex justify-center text-3xl font-black py-1 text-gray-700">Your Basket</h2>
+              <p className="text-gray-500 flex justify-center font-semibold text-lg">{inTheBasket()} items selected</p>
               <div className="flex align-center justify-center flex-col">
                 <div className="my-2">
                   {basketItems.length === 0 && (

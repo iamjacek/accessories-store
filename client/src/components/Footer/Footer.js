@@ -20,7 +20,7 @@ const Footer = () => (
           <span className="font-racing text-5xl tracking-wide text-purple-600 text-shadow">line</span>
         </div>
         
-        <p className="text-sm text-gray-600 text-shadow-md transform -translate-y-2 tracking-wide">Selected phone accessories</p>
+        <p className="text-sm text-gray-600 text-shadow-md transform -translate-y-3 tracking-wide">Selected phone accessories</p>
       </NavLink>
         </div>
 

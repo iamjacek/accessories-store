@@ -22803,6 +22803,14 @@ video {
   min-width: 16rem;
 }
 
+.top-24 {
+  top: 6rem;
+}
+
+.border-4 {
+  border-width: 4px;
+}
+
 .text-shadow {
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
