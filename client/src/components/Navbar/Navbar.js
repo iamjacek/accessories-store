@@ -4,6 +4,7 @@ import MobileMenu from '../MobileMenu/MobileMenu'
 import x from '../../assets/cancel.svg'
 import { getToken, clearBasket, clearToken } from '../../utils'
 import basketIcon from '../../assets/shopping-cart.svg'
+import line from '../../assets/logo-line.svg'
 
 const Navbar = (props) => {
 
@@ -36,14 +37,16 @@ const AuthNav = ({ handleSignout }) => {
 
 
   return (
-    <nav className=" bg-gray-700 p-6">
+    <nav className="bg-white pb-2 px-12">
       <div className="container mx-auto flex items-center flex-wrap justify-between">
-      <NavLink to="/" className="flex items-center flex-shrink-0 text-white mr-6 pt-1">
-        <svg className="fill-current h-10 w-9" width="47" height="47" viewBox="0 0 35 35" xmlns="http://www.w3.org/2000/svg"><path d="M22.507,0H9.175C7.9,0,6.87,1.034,6.87,2.309v27.07c0,1.271,1.03,2.306,2.305,2.306h13.332
-        c1.273,0,2.307-1.034,2.307-2.306V2.309C24.813,1.034,23.78,0,22.507,0z M23.085,25.672H8.599V3.895h14.486V25.672z M18.932,2.343
-        h-6.181V1.669h6.182L18.932,2.343L18.932,2.343z M21.577,2.035c0,0.326-0.266,0.59-0.591,0.59c-0.326,0-0.591-0.265-0.591-0.59
-        s0.265-0.59,0.591-0.59C21.312,1.444,21.577,1.709,21.577,2.035z M18.655,29.225h-5.629v-1.732h5.629V29.225z"/></svg>
-        <span className="font-semibold text-xl tracking-tight transform -translate-x-8 -translate-y-1 whitespace-pre-wrap tracking-wide">A{` `}CCEESSORIES</span>
+      <NavLink to="/" className="flex flex-col items-center flex-shrink-0 text-white mr-6 -mt-8">
+        <img src={line} alt="logo line" className="transform translate-y-10 pb-1 translate-x-3"/>
+        <div className="flex flex-row">
+          <span className="font-racing text-5xl tracking-wide text-gray-700 text-shadow-md">beep</span>
+          <span className="font-racing text-5xl tracking-wide text-purple-600 text-shadow-md">line</span>
+        </div>
+        
+        <p className="text-sm text-gray-600 text-shadow-md transform -translate-y-2">Selected phone accessories</p>
       </NavLink>
       <div className="block sm:hidden">
         <button onClick={toggleMobileMenu} className="flex items-center px-3 py-2 border rounded text-orange-100 border-orange-100 hover:text-white hover:border-white">
@@ -61,7 +64,7 @@ const AuthNav = ({ handleSignout }) => {
       </div>
       <div className="w-full hidden sm:block flex-grow sm:flex sm:items-center sm:w-auto sm:pl-1">
         <div className="sm:flex-grow">
-          <NavLink to='/' exact activeClassName="text-orange-500" className="block text-md mt-4 sm:inline-block sm:mt-0 text-orange-100 hover:text-orange-500 mr-4">
+          <NavLink to='/' exact activeClassName="italic" className="block text-md font-medium sm:inline-block text-gray-700 hover:text-purple-600 mr-4">
             Categories
           </NavLink>
           
@@ -92,14 +95,11 @@ const UnAuthNav = () => {
   }
 
   return (
-    <nav className=" bg-gray-700 p-6">
+    <nav className="bg-white py-4 px-12">
       <div className="container mx-auto flex items-center flex-wrap justify-between">
       <NavLink to="/" className="flex items-center flex-shrink-0 text-white mr-6 pt-1">
-        <svg className="fill-current h-10 w-9" width="47" height="47" viewBox="0 0 35 35" xmlns="http://www.w3.org/2000/svg"><path d="M22.507,0H9.175C7.9,0,6.87,1.034,6.87,2.309v27.07c0,1.271,1.03,2.306,2.305,2.306h13.332
-        c1.273,0,2.307-1.034,2.307-2.306V2.309C24.813,1.034,23.78,0,22.507,0z M23.085,25.672H8.599V3.895h14.486V25.672z M18.932,2.343
-        h-6.181V1.669h6.182L18.932,2.343L18.932,2.343z M21.577,2.035c0,0.326-0.266,0.59-0.591,0.59c-0.326,0-0.591-0.265-0.591-0.59
-        s0.265-0.59,0.591-0.59C21.312,1.444,21.577,1.709,21.577,2.035z M18.655,29.225h-5.629v-1.732h5.629V29.225z"/></svg>
-        <span className="font-semibold text-xl tracking-tight transform -translate-x-8 -translate-y-1 whitespace-pre-wrap tracking-wide">A{` `}CCEESSORIES</span>
+      <span className="font-racing text-4xl tracking-wide text-gray-700">beep</span>
+        <span className="font-racing text-4xl tracking-wide text-purple-600">line</span>
       </NavLink>
       <div className="block sm:hidden">
         <button onClick={toggleMobileMenu} className="flex items-center px-3 py-2 border rounded text-orange-100 border-orange-100 hover:text-white hover:border-white">
@@ -107,8 +107,6 @@ const UnAuthNav = () => {
           <div className="w-3 h-3">
               <img src={x} className="fill-current" alt="close icon"/>
           </div>
-
-            
           }
           { !isMenuOpen &&
             <svg className="fill-current h-3 w-3" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><title>Menu</title><path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"/></svg>
@@ -117,7 +115,7 @@ const UnAuthNav = () => {
       </div>
       <div className="w-full hidden sm:block flex-grow sm:flex sm:items-center sm:w-auto sm:pl-1">
         <div className="sm:flex-grow">
-          <NavLink to='/' exact activeClassName="text-orange-500" className="block text-md mt-4 sm:inline-block sm:mt-0 text-orange-100 hover:text-orange-500 mr-4">
+        <NavLink to='/' exact activeClassName="italic" className="block text-md font-medium sm:inline-block text-gray-700 hover:text-purple-600 mr-4">
             Categories
           </NavLink>
           

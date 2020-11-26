@@ -7,6 +7,11 @@ module.exports = {
       'public/**/*.html',
     ],
     theme: {
+      fontFamily: {
+        'montserrat': ['Montserrat', 'sans-serif'],
+        'racing': ['"Racing Sans One"', 'serif'],
+
+      },
       inset: {
         '1/4': '25%',
         '1/2': '50%',
