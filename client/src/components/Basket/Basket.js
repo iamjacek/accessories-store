@@ -57,8 +57,8 @@ const Basket = ({ toAdd, basketOpen }) => {
       
     return (
         <div className={ basketOpen ? 
-        "absolute z-50 w-full transition-opacity duration-200 top-24 right-0 left-0" : 
-        "absolute opacity-0 z-50 w-full transition-opacity duration-200 top-24 right-0 left-0 transform -translate-x-full" }>
+        "absolute opacity-1 z-50 w-full transition-opacity duration-300 top-24 right-0 left-0" : 
+        "absolute opacity-0 z-50 w-full transition-opacity duration-300 top-24 right-0 left-0 transform -translate-x-full" }>
         <div className="bg-white border border-4 border-gray-700 rounded-3xl mx-4 sm:mx-12 mt-4 py-4">
           <div className="flex flex-col align-center px-2 py-4">
             <h2 className="flex justify-center text-3xl font-black py-1 text-gray-700">Your Basket</h2>

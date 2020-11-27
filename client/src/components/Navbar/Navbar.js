@@ -69,7 +69,7 @@ const AuthNav = ({ handleSignout, basketOpen }) => {
       </div>
       <div className="w-full hidden sm:block flex-grow sm:flex sm:items-center sm:w-auto sm:pl-1 pb-6">
         <div className="sm:flex-grow">
-          <NavLink to='/' exact activeClassName="italic" className="block text-md font-medium sm:inline-block text-gray-700 hover:text-purple-600 mr-4">
+          <NavLink to='/' exact activeClassName="italic" className="block hover:underline text-md font-medium sm:inline-block text-gray-700 hover:text-purple-600 mr-4">
             Categories
           </NavLink>
           
@@ -78,10 +78,10 @@ const AuthNav = ({ handleSignout, basketOpen }) => {
           <button className="px-6 py-1 mx-2" onClick={toggleBasket}>
             <img src={basketIcon} alt="basket-trolley" className="h-6"></img>
           </button>
-            <NavLink to='/checkout' activeClassName="italic" className="block text-md mt-4 sm:inline-block sm:mt-0 text-gray-700 hover:text-purple-600 mr-4 active:text-xl">
+            <NavLink to='/checkout' activeClassName="italic" className="block hover:underline text-md mt-4 sm:inline-block sm:mt-0 text-gray-700 hover:text-purple-600 mr-4 active:text-xl">
               Checkout
             </NavLink>
-            <button onClick={handleSignout}  className="bg-purple-600 inline-block mt-5 text-md px-8 py-2 leading-none border rounded-full text-white hover:bg-purple-500 mt-4 sm:mt-0 shadow">Sign out</button>
+            <button onClick={handleSignout}  className="bg-purple-600 inline-block mt-5 text-md px-8 py-2 leading-none border rounded-full text-white mt-4 sm:mt-0 shadow button-beep">Sign out</button>
         </div>
       </div>
       <MobileMenu isOpen={isMenuOpen} toggleX={toggleMobileMenu}/>
@@ -125,7 +125,7 @@ const UnAuthNav = () => {
       </div>
       <div className="w-full hidden sm:block flex-grow sm:flex sm:items-center sm:w-auto sm:pl-1">
         <div className="sm:flex-grow">
-        <NavLink to='/' exact activeClassName="italic" className="block text-md font-medium sm:inline-block text-gray-700 hover:text-purple-600 mr-4">
+        <NavLink to='/' exact activeClassName="italic" className="block button-beep text-md font-medium sm:inline-block text-gray-700 hover:text-purple-600 mr-4">
             Categories
           </NavLink>
           
@@ -134,10 +134,10 @@ const UnAuthNav = () => {
           <button className="px-6 py-1 mx-2" >
             <img src={basketIcon} alt="basket-trolley" className="h-6"></img>
           </button>
-            <NavLink to='/signin' activeClassName="text-orange-500" className="block text-md mt-4 sm:inline-block sm:mt-0 text-gray-700 hover:text-purple-600 mr-4 active:text-xl">
+            <NavLink to='/signin' activeClassName="text-orange-500" className="block button-beep text-md mt-4 sm:inline-block sm:mt-0 text-gray-700 hover:text-purple-600 mr-4 active:text-xl">
               Sign in
             </NavLink>
-            <NavLink to='/signup' className="bg-purple-600 inline-block mt-5 text-md px-8 py-2 leading-none border rounded-full text-white hover:bg-purple-500 mt-4 sm:mt-0 shadow">Sign up</NavLink>
+            <NavLink to='/signup' className="bg-purple-600 button-beep inline-block mt-5 text-md px-8 py-2 leading-none border rounded-full text-white mt-4 sm:mt-0 shadow">Sign up</NavLink>
         </div>
       </div>
       <MobileMenu isOpen={isMenuOpen} toggleX={toggleMobileMenu}/>

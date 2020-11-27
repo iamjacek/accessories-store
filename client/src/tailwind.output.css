@@ -22811,6 +22811,16 @@ video {
   border-width: 4px;
 }
 
+.button-beep {
+  transform: scale(1);
+  transition: transform 0.15s 0.1s;
+}
+
+.button-beep:hover {
+  transform: scale(1.1);
+  transition: transform 0.15s 0.1s;
+}
+
 .text-shadow {
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }

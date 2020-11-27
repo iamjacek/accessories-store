@@ -31,10 +31,10 @@ const Footer = () => (
             <h4 className="text-white text-center mb-2 text-gray-700">Important</h4>
             <ul className="nav navbar-nav text-center">
                 <li id="navi-2" className="leading-7 text-sm">
-                    <a className="text-gray-600 hover:text-purple-600 text-small" href="/page-1">
+                    <a className="text-gray-600 hover:text-purple-600 hover:underline text-small" href="/page-1">
                         Page 1 </a>
                 </li>
-                <li id="navi-1" className="leading-7 text-sm"><a className="text-gray-600 hover:text-purple-600 text-small" href="/page-2">Page 2</a></li>
+                <li id="navi-1" className="leading-7 text-sm"><a className="text-gray-600 hover:text-purple-600 hover:underline text-small" href="/page-2">Page 2</a></li>
             </ul>
 
 
@@ -45,10 +45,10 @@ const Footer = () => (
             <h4 className="text-white text-center mb-2 text-gray-700">Info</h4>
             <ul className="text-center">
             <li id="navi-2" className="leading-7 text-sm">
-                <a className="text-gray-600 hover:text-purple-600 text-small" href="/page-1">
+                <a className="text-gray-600 hover:text-purple-600 hover:underline text-small" href="/page-1">
                     Page 1 </a>
             </li>
-            <li id="navi-1" className="leading-7 text-sm"><a className="text-gray-600 hover:text-purple-600 text-small" href="/page-2">Page 2</a></li>
+            <li id="navi-1" className="leading-7 text-sm"><a className="text-gray-600 hover:text-purple-600 hover:underline text-small" href="/page-2">Page 2</a></li>
             </ul>
         </div>
 
@@ -58,10 +58,10 @@ const Footer = () => (
             <h4 className="text-white text-center mb-2 text-gray-700">Products</h4>
             <ul className="text-center">
             <li id="navi-2" className="leading-7 text-sm">
-                <a className="text-gray-600 hover:text-purple-600 text-small" href="/page-1">
+                <a className="text-gray-600 hover:text-purple-600 hover:underline text-small" href="/page-1">
                     Page 1 </a>
             </li>
-            <li id="navi-1" className="leading-7 text-sm"><a className="text-gray-600 hover:text-purple-600 text-small" href="/page-2">Page 2</a></li>
+            <li id="navi-1" className="leading-7 text-sm"><a className="text-gray-600 hover:text-purple-600 hover:underline text-small" href="/page-2">Page 2</a></li>
             </ul>
         </div>
 
