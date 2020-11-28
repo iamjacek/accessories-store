@@ -28,7 +28,7 @@ const Footer = () => (
             {/* <!-- Column 2 Content --> */}
 
 
-            <h4 className="text-white text-center mb-2 text-gray-700">Important</h4>
+            <h4 className="font-semibold text-center mb-2 text-gray-700">Important</h4>
             <ul className="nav navbar-nav text-center">
                 <li id="navi-2" className="leading-7 text-sm">
                     <a className="text-gray-600 hover:text-purple-600 hover:underline text-small" href="/page-1">
@@ -42,7 +42,7 @@ const Footer = () => (
 
         <div className="w-full overflow-hidden flex flex-col justify-center sm:my-1 sm:px-1 sm:w-1/2 md:my-px md:px-px md:w-1/2 lg:my-2 lg:px-2 lg:w-1/4 xl:my-2 xl:px-2 xl:w-1/4 pb-6">
             {/* <!-- Column 3 Content --> */}
-            <h4 className="text-white text-center mb-2 text-gray-700">Info</h4>
+            <h4 className="font-semibold text-center mb-2 text-gray-700">Info</h4>
             <ul className="text-center">
             <li id="navi-2" className="leading-7 text-sm">
                 <a className="text-gray-600 hover:text-purple-600 hover:underline text-small" href="/page-1">
@@ -55,7 +55,7 @@ const Footer = () => (
         <div className="w-full overflow-hidden flex flex-col justify-center sm:my-1 sm:px-1 sm:w-1/2 md:my-px md:px-px md:w-1/2 lg:my-2 lg:px-2 lg:w-1/4 xl:my-2 xl:px-2 xl:w-1/4 pb-6">
             {/* <!-- Column 4 Content --> */}
 
-            <h4 className="text-white text-center mb-2 text-gray-700">Products</h4>
+            <h4 className="text-center mb-2 text-gray-700 font-semibold">Products</h4>
             <ul className="text-center">
             <li id="navi-2" className="leading-7 text-sm">
                 <a className="text-gray-600 hover:text-purple-600 hover:underline text-small" href="/page-1">
@@ -71,7 +71,7 @@ const Footer = () => (
 
     {/* <!-- Start footer bottom --> */}
 
-    <div className="pt-4 flex justify-center md:flex items-center border-t-2 border-gray-300">
+    <div className="pt-4 flex justify-center md:flex items-center border-t-2 border-purple-600">
         <ul className="text-center">
             <li className="sm:mx-2 sm:inline leading-7 text-sm" id="footer-navi-2"><a className="text-gray-700  text-small hover:text-purple-600" href="/disclaimer">Disclaimer</a></li>
             <li className="sm:mx-2 sm:inline leading-7 text-sm" id="footer-navi-2"><a className="text-gray-700  text-small hover:text-purple-600" href="/cookie">Cookie policy</a></li>

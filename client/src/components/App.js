@@ -50,22 +50,22 @@ function App () {
       {/* Categories */}
       <div className="flex flex-col justify-center mb-4 text-center">
         {/* Header */}
-        <h1 className="text-3xl my-6 font-extrabold text-gray-700">CATEGORIES</h1>
+        <h1 className="text-2xl my-6 font-medium text-gray-700">CATEGORIES</h1>
 
         {/* SEARCH */}
         <div className="flex flex-row content-center justify-center self-center transform -translate-x-2">
-        <img src={search} alt="search icon" className="h-4 mt-2 transform translate-x-6"/>
-        <input className="h-8 text-sm shadow appearance-none border rounded w-full py-2 pl-8 pr-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="search" placeholder="Search" value={searchTerm} onChange={handleChange}/>
+        <img src={search} alt="search icon" className="h-4 mt-2 transform translate-x-8"/>
+        <input className="h-8 text-md shadow bg-white border-2 border-purple-600 font-semibold appearance-none rounded-full w-full py-2 pl-10 pr-3 text-gray-600 leading-tight focus:outline-none placeholder-gray focus:outline-white" type="search" placeholder="Search" value={searchTerm} onChange={handleChange}/>
       </div>
 
         <div className="flex flex-wrap justify-center mb-6 mx-auto" style={{maxWidth: "1920px"}}>
           {filteredCats(searchTerm, data.cats).map((cat) => (
-            <Link className="w-64 rounded overflow-hidden shadow-lg my-8 mx-3 text-left hover:shadow-2xl transition-shadow duration-200" key={cat._id} to={`/product/${cat._id}`}>
-              <img className="w-full h-48 object-cover" src={`${apiUrl}${cat.image.url}`} alt={cat.image.name} />
-              <div className="px-6 pt-3 pb-2">
+            <Link className="w-48 rounded overflow-hidden shadow-lg my-8 mx-3 text-left hover:shadow-2xl transition-shadow duration-200" key={cat._id} to={`/product/${cat._id}`}>
+              <img className="w-full h-40 object-cover" src={`${apiUrl}${cat.image.url}`} alt={cat.image.name} />
+              <div className="px-4 pt-2 pb-2">
                 <div className="flex flex-col justify-between content-center">
-                  <h2 className="text-2xl text-gray-900 font-bold mb-0 pb-1 leading-7"> {cat.name} </h2>
-                  <span className="text-sm text-orange-500 font-bold mb-2 pt-0 ">{`Shop now >`}</span>
+                  <h2 className="text-md text-gray-700 font-semibold mb-0 pb-1 leading-7"> {cat.name} </h2>
+                  <span className="text-sm text-purple-600 font-bold mb-2 pt-0 ">{`Shop now >`}</span>
                 </div>
                 
                 

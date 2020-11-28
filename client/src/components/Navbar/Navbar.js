@@ -81,7 +81,7 @@ const AuthNav = ({ handleSignout, basketOpen }) => {
             <NavLink to='/checkout' activeClassName="italic" className="block hover:underline text-md mt-4 sm:inline-block sm:mt-0 text-gray-700 hover:text-purple-600 mr-4 active:text-xl">
               Checkout
             </NavLink>
-            <button onClick={handleSignout}  className="bg-purple-600 inline-block mt-5 text-md px-8 py-2 leading-none border rounded-full text-white mt-4 sm:mt-0 shadow button-beep">Sign out</button>
+            <button onClick={handleSignout}  className="bg-purple-600 inline-block mt-5 text-md font-semibold px-8 py-2 leading-none rounded-full text-white mt-4 sm:mt-0 shadow button-beep">Sign out</button>
         </div>
       </div>
       <MobileMenu isOpen={isMenuOpen} toggleX={toggleMobileMenu}/>
@@ -137,7 +137,7 @@ const UnAuthNav = () => {
             <NavLink to='/signin' activeClassName="text-orange-500" className="block button-beep text-md mt-4 sm:inline-block sm:mt-0 text-gray-700 hover:text-purple-600 mr-4 active:text-xl">
               Sign in
             </NavLink>
-            <NavLink to='/signup' className="bg-purple-600 button-beep inline-block mt-5 text-md px-8 py-2 leading-none border rounded-full text-white mt-4 sm:mt-0 shadow">Sign up</NavLink>
+            <NavLink to='/signup' className="bg-purple-600 button-beep inline-block mt-5 text-md px-8 py-2 leading-none font-semibold rounded-full text-white mt-4 sm:mt-0 shadow">Sign up</NavLink>
         </div>
       </div>
       <MobileMenu isOpen={isMenuOpen} toggleX={toggleMobileMenu}/>
