@@ -96,7 +96,7 @@ const Items = ({passNewBasketItems, ...props}) => {
               <p className="flex justify-center text-gray-700 font-racing font-medium text-2xl leading-6 py-1">
                 £{item.price}
               </p>
-              <button onClick={() => handleClick(item)} className="leading-none font-semibold text-md mt-1 mb-1 mx-2 bg-purple-600 button-beep text-white font-bold py-2 rounded-full">
+              <button onClick={() => handleClick(item)} className="leading-none font-semibold text-md mt-1 mb-1 mx-2 bg-purple-600 button-beep text-white py-2 rounded-full">
               Add to basket
               </button>
             </div>

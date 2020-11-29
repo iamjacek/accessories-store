@@ -10,10 +10,6 @@ a:visited {
   text-decoration: none;
 }
 
-.active {
-  font-style: italic;
-}
-
 form input {
   margin-bottom: 0.5em;
 }

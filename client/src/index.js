@@ -55,7 +55,7 @@ const Root = () => {
     <Router>
       <ApolloProvider client={client}>
         <Navbar basketOpenInfo={sendBasketOpen}/>
-        <Basket toAdd={newItem} basketOpen={isBasketOpen}/>
+        <Basket toAdd={newItem} basketOpen={isBasketOpen} toggleBasketItself={() => setIsBasketOpen(!isBasketOpen)}/>
         <Switch>
           <Route component={App} exact path="/" />
           <Route component={Signin} path="/signin" />

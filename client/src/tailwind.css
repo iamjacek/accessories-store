@@ -37,6 +37,11 @@
     transition: transform 0.15s 0.1s;
   }
 
+  .close-basket {
+    top: 2rem;
+    right: 1rem;
+  }
+
   .text-shadow {
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   }
