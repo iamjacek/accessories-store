@@ -12,7 +12,7 @@ const Footer = () => (
 
           <NavLink
             to="/"
-            className="flex flex-col items-center flex-shrink-0 text-white mr-6 -mt-10 -mb-1"
+            className="flex transform scale-75 flex-col items-center flex-shrink-0 text-white mr-6 -mt-10 -mb-1"
           >
             <img
               src={line}

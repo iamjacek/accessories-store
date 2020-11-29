@@ -53,7 +53,7 @@ const SingleItem = ({ passNewBasketItems, ...props }) => {
       </h1>
       <div className="text-center flex flex-col-reverse sm:flex-row justify-around content-center">
         <Link to={`/product/${cat._id}`}>
-          <button className="button-beep shadow appearance-none rounded-full border-2 border-purple-600 button text-md leading-none text-gray-600 font-semibold px-8 h-8 sm:mt-0 w-24 mx-auto sm:mx-0">
+          <button className="button-beep shadow appearance-none rounded-full border-2 border-purple-600 button text-md leading-none text-gray-600 font-semibold px-8 h-8 sm:mt-0 mx-auto sm:mx-0">
             Back
           </button>
         </Link>

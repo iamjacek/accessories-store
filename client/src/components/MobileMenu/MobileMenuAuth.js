@@ -2,7 +2,13 @@ import React from "react"
 import { NavLink } from "react-router-dom"
 import basket from "../../assets/shopping-cart.svg"
 
-const MobileMenu = ({ isOpen, toggleX }) => {
+const MobileMenuAuth = ({ isOpen, toggleX, toSignOut }) => {
+  const handleClick = () => {
+    toggleX()
+    toSignOut()
+  }
+
+  const handleSignout = () => {}
   return (
     <div
       className={`${
@@ -20,21 +26,21 @@ const MobileMenu = ({ isOpen, toggleX }) => {
 
       <NavLink
         onClick={toggleX}
-        to="/signin"
+        to="/checkout"
+        activeClassName="italic"
         className="block text-md mt-4 text-gray-700 text-center"
       >
-        Sign in
+        Checkout
       </NavLink>
 
-      <NavLink
-        to="/signup"
-        onClick={toggleX}
+      <button
+        onClick={handleClick}
         className="bg-purple-600 button-beep inline-block mt-3 text-md px-8 py-2 leading-none font-semibold rounded-full text-white shadow"
       >
-        Sign up
-      </NavLink>
+        Sign out
+      </button>
     </div>
   )
 }
 
-export default MobileMenu
+export default MobileMenuAuth
