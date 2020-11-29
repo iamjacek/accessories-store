@@ -11,8 +11,7 @@ const Navbar = ({ basketOpenInfo, ...props }) => {
   const toggleBasket = () => {
     basketOpenInfo()
   }
-
-  const handleSignout = () => {
+ const handleSignout = () => {
     clearToken()
     clearBasket()
     props.history.push('/')
@@ -44,7 +43,7 @@ const AuthNav = ({ handleSignout, basketOpen }) => {
   return (
     <nav className="bg-white pb-2 px-5 sm:px-12">
       <div className="w-full flex items-center justify-between flex-col">
-        <div className="container w-full flex items-center sm:items-end justify-between flex-row">
+        <div className="container w-full flex items-center justify-between flex-row">
           <NavLink to="/" className="flex flex-col items-center flex-shrink-0 text-white mr-6 -mt-10 -mb-1">
             <img src={line} alt="logo line" className="transform translate-y-10 pb-1 translate-x-3"/>
             <div className="flex flex-row">
@@ -54,7 +53,31 @@ const AuthNav = ({ handleSignout, basketOpen }) => {
             
             <p className="text-sm text-gray-600 text-shadow-md transform -translate-y-3 tracking-wide">Selected phone accessories</p>
           </NavLink>
-          <div className="block md:hidden focus:outline-none">
+          
+          <div className="w-full flex flex-row items-center">
+            <div className="flex hidden md:block flex-grow items-center">
+              <NavLink to='/' exact activeClassName="italic" className="hover:underline text-md font-medium text-gray-700 hover:text-purple-600 mr-4">
+                Categories
+              </NavLink>
+              
+            </div>
+            <div className="flex flex-row items-center">
+
+                <button className="px-3 hidden md:block py-1 mx-2" onClick={toggleBasket}>
+                  <img src={basketIcon} alt="basket-trolley" className="h-6" />
+                </button>
+
+                <NavLink to='/checkout' activeClassName="italic" className="hidden md:block hover:underline text-md text-gray-700 hover:text-purple-600 mr-4 active:text-xl">
+                  Checkout
+                </NavLink>
+
+                <button onClick={handleSignout}  className="bg-purple-600 hidden md:block inline-block mt-5 text-md font-semibold px-8 py-2 leading-none rounded-full text-white mt-4 sm:mt-0 shadow button-beep">
+                  Sign out
+                </button>
+                
+            </div>
+
+            <div className="block md:hidden focus:outline-none ml-auto">
             <button onClick={toggleMobileMenu} className="flex focus:outline-none items-center px-3 py-2 rounded">
               { isMenuOpen &&
               <div className="w-5 h-5">
@@ -68,22 +91,6 @@ const AuthNav = ({ handleSignout, basketOpen }) => {
               }
             </button>
           </div>
-          <div className="hidden md:block flex flex-grow flex-row items-center justify-between pb-6">
-            <div className="flex items-center content-center flex-grow">
-              <NavLink to='/' exact activeClassName="italic" className="hover:underline text-md font-medium text-gray-700 hover:text-purple-600 mr-4">
-                Categories
-              </NavLink>
-              
-            </div>
-            <div className="flex flex-row justify-center items-center">
-              <button className="px-3 py-1 mx-2" onClick={toggleBasket}>
-                <img src={basketIcon} alt="basket-trolley" className="h-6"></img>
-              </button>
-                <NavLink to='/checkout' activeClassName="italic" className="block hover:underline text-md mt-4 sm:inline-block sm:mt-0 text-gray-700 hover:text-purple-600 mr-4 active:text-xl">
-                  Checkout
-                </NavLink>
-                <button onClick={handleSignout}  className="bg-purple-600 inline-block mt-5 text-md font-semibold px-8 py-2 leading-none rounded-full text-white mt-4 sm:mt-0 shadow button-beep">Sign out</button>
-            </div>
           </div>
           
         </div>

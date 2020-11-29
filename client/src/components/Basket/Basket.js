@@ -66,7 +66,7 @@ const Basket = ({ toAdd, basketOpen, toggleBasketItself }) => {
               <img src={x} alt='close button' className="w-5 h-5" /> 
             </div>
             <h2 className="flex justify-center py-1 text-2xl font-medium text-gray-700">YOUR BASKET</h2>
-              <p className="text-gray-500 flex justify-center font-medium text-md">{inTheBasket()} items selected</p>
+              <p className="text-gray-500 flex justify-center font-medium text-md">{inTheBasket()} item{(inTheBasket() > 1) ? 's': ''} selected</p>
               <div className="flex align-center justify-center flex-col">
                 <div className="my-4">
                   {basketItems.length === 0 && (

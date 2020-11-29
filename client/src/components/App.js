@@ -50,7 +50,7 @@ function App () {
       {/* Categories */}
       <div className="flex flex-col justify-center mb-4 text-center">
         {/* Header */}
-        <h1 className="text-2xl my-6 font-medium text-gray-700">CATEGORIES</h1>
+        <h1 className="text-2xl my-6 font-medium text-gray-700 text-shadow">CATEGORIES</h1>
 
         {/* SEARCH */}
         <div className="flex flex-row content-center justify-center self-center transform -translate-x-2">
@@ -62,10 +62,10 @@ function App () {
           {filteredCats(searchTerm, data.cats).map((cat) => (
             <Link className="w-48 rounded overflow-hidden shadow-lg my-8 mx-3 text-left hover:shadow-2xl transition-shadow duration-200" key={cat._id} to={`/product/${cat._id}`}>
               <img className="w-full h-40 object-cover" src={`${apiUrl}${cat.image.url}`} alt={cat.image.name} />
-              <div className="px-4 pt-2 pb-2">
+              <div className="px-4 py-2 border-top">
                 <div className="flex flex-col justify-between content-center">
-                  <h2 className="text-md text-gray-700 font-semibold mb-0 pb-1 leading-7"> {cat.name} </h2>
-                  <span className="text-sm text-purple-600 font-bold mb-2 pt-0 ">{`Shop now >`}</span>
+                  <h2 className="text-md text-gray-700 font-semibold mb-0 pb-1 leading-7 text-shadow"> {cat.name} </h2>
+                  <span className="text-sm text-purple-600 font-bold mb-1 text-shadow">{`Shop now >`}</span>
                 </div>
                 
                 

@@ -10,7 +10,7 @@ const MobileMenu = ({isOpen, toggleX, triggerBasket}) => {
     }
 
     return (
-        <div className={`${ isOpen ? 'block' : 'hidden' } sm:hidden pb-6 rounded-2xl w-full mt-2 flex flex-col flex-grow items-center bg-gray-100`}>
+        <div className={`${ isOpen ? 'block' : 'hidden' } md:hidden pb-6 rounded-2xl w-full mt-2 flex flex-col flex-grow items-center bg-gray-100`}>
             
         <NavLink onClick={toggleX} to='/' exact className="block text-md mt-4 text-gray-700 mr-4">
             Categories

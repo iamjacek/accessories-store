@@ -59,7 +59,7 @@ const Items = ({passNewBasketItems, ...props}) => {
     {/* Categories */}
     <div className="flex flex-col justify-center mb-4 text-center">
       {/* Header */}
-      <h1 className="text-2xl my-6 font-medium text-gray-700">{data.cat.name.toUpperCase()}</h1>
+      <h1 className="text-2xl my-6 font-medium text-gray-700 text-shadow">{data.cat.name.toUpperCase()}</h1>
 
       <div className="flex flex-col-reverse sm:flex-row justify-around content-center mb-4">
         <Link to="/">
@@ -78,9 +78,9 @@ const Items = ({passNewBasketItems, ...props}) => {
 
       
 
-      <div className="flex flex-wrap justify-center mb-6 mx-auto" style={{maxWidth: "1920px"}}>
+      <div className="flex flex-wrap justify-center mb-6 mx-auto py-12" style={{maxWidth: "1920px"}}>
         {filteredCats(searchTerm, data.cat.items).map((item) => (
-          <div className="w-40 flex flex-col rounded overflow-hidden my-8 mx-3 text-center transition-shadow duration-200" key={item._id}  >
+          <div className="w-40 flex flex-col rounded overflow-hidden my-4 mx-3 text-center transition-shadow duration-200" key={item._id}  >
             <Link to={`/item/${item._id}/${item.name}`}>
             
             <img className="w-full h-40 object-cover" src={`${apiUrl}${item.image.url}`} alt={item.image.name} />
@@ -89,14 +89,14 @@ const Items = ({passNewBasketItems, ...props}) => {
             <div className="py-2 flex flex-col flex-grow">
               <Link to={`/item/${item._id}/${item.name}`}>
                 <div className="flex flex-col justify-between content-center">
-                  <h2 className="text-md text-gray-700 font-semibold leading-4 h-8"> {item.name} </h2>
+                  <h2 className="text-md text-gray-700 font-semibold leading-4 h-8 text-shadow"> {item.name} </h2>
                 </div>
               </Link>              
               <p className="flex justify-center text-purple-600 text-sm">★★★★★</p>
-              <p className="flex justify-center text-gray-700 font-racing font-medium text-2xl leading-6 py-1">
+              <p className="flex justify-center text-gray-700 font-racing font-medium text-shadow text-2xl leading-6 py-1">
                 £{item.price}
               </p>
-              <button onClick={() => handleClick(item)} className="leading-none font-semibold text-md mt-1 mb-1 mx-2 bg-purple-600 button-beep text-white py-2 rounded-full">
+              <button onClick={() => handleClick(item)} className="leading-none font-semibold text-md mt-1 mb-1 mx-2 bg-purple-600 button-beep text-white py-2 rounded-full shadow">
               Add to basket
               </button>
             </div>
