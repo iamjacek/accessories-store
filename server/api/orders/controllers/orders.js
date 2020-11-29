@@ -1,9 +1,6 @@
 "use strict";
 
-
-const stripe = require("stripe")(
-  process.env.SK_STRIPE
-);
+const stripe = require("stripe")(process.env.SK_STRIPE);
 
 /**
  * Read the documentation (https://strapi.io/documentation/v3.x/concepts/controllers.html#core-controllers)
@@ -56,27 +53,24 @@ module.exports = {
    */
 
   create: async (ctx) => {
-
-
-      const {
-        token,
-        amount,
-        fullName,
-        address,
-        postCode,
-        confirmationEmail,
-        city,
-        items
-      } = ctx.request.body;
-
-
+    const {
+      token,
+      amount,
+      fullName,
+      address,
+      postCode,
+      confirmationEmail,
+      city,
+      items,
+    } = ctx.request.body;
 
     // Send charge to Stripe
     const charge = await stripe.charges.create({
-
       amount: amount * 100,
       currency: "gbp",
-      description: `Order ${new Date(Date.now())} - User ${ctx.state.user._id}, Name: ${fullName}, Address: ${address}`,
+      description: `Order ${new Date(Date.now())} - User ${
+        ctx.state.user._id
+      }, Name: ${fullName}, Address: ${address}`,
       source: token,
     });
 
@@ -92,6 +86,6 @@ module.exports = {
       city,
     });
 
-    return order
+    return order;
   },
 };

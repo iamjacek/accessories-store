@@ -1,14 +1,13 @@
-import React from 'react'
-import { useQuery, gql } from '@apollo/client';
-import Spinner from './Spinner'
+import React from "react"
+import { useQuery, gql } from "@apollo/client"
+import Spinner from "./Spinner"
 import { Link } from "react-router-dom"
-import basketIcon from '../assets/shopping-cart.svg'
+import basketIcon from "../assets/shopping-cart.svg"
 
-const apiUrl = process.env.API_URL || 'http://localhost:1337'
+const apiUrl = process.env.API_URL || "http://localhost:1337"
 
-const SingleItem = ({passNewBasketItems, ...props}) => {
-
-    const ITEM =gql`
+const SingleItem = ({ passNewBasketItems, ...props }) => {
+  const ITEM = gql`
         query{
             item (id: "${props.match.params.id}"){
             _id
@@ -27,71 +26,93 @@ const SingleItem = ({passNewBasketItems, ...props}) => {
         }
     `
 
-    const {loading, error, data } = useQuery(ITEM)
-    
-    const handleClick = (item) => {
-        passNewBasketItems(item)
-      }
+  const { loading, error, data } = useQuery(ITEM)
 
-    if (loading) return (<main className="container mx-auto px-4 sm:px-8 flex-grow max-w-full">
-    <Spinner />
-    </main>)
-  if (error) return (<main className="container mx-auto px-4 sm:px-8 flex-grow max-w-full">
-    <p>Error :(</p>
-    </main>)
+  const handleClick = (item) => {
+    passNewBasketItems(item)
+  }
 
-    const { name, description, price, image, subcategory, cat } = data.item
+  if (loading)
     return (
-        <main className="flex flex-col content-center flex-grow">
-            <h1 className="text-xl mt-10 font-bold text-center text-gray-700">You're browsing {cat.name}</h1>
-            <div className="text-center mt-6 flex flex-col-reverse sm:flex-row justify-around content-center">
-            <button className="whitespace-pre-wrap shadow appearance-none border rounded bg-transparent hover:bg-gray-100 text-md leading-none text-gray-500 font-semibold px-4 py-2 border rounded mt-2 sm:mt-0 w-24 mx-auto sm:mx-0">
-            <Link to={`/product/${cat._id}`}>{`<   Back`}</Link> 
-            </button>
-            <button className="w-48 whitespace-pre-wrap shadow appearance-none border rounded bg-transparent hover:bg-gray-100 text-sm text-gray-500 font-semibold px-4 py-2 border rounded mt-2 sm:mt-0 w-24 mx-auto sm:mx-0 mb-2 sm:mb-0">
-            <Link to={`/`}>{`Change category`}</Link> 
-            </button>
-            
-            </div>
-            
-            <div className="flex flex-col sm:flex-row content-center my-10 w-full lg:w-4/5 xl:w-4/6 mx-auto px-0 sm:px-4 md:px-12">
-                
-                
-                
-                {/* IMAGE */}
-                <div className="flex justify-center items-center w-full sm:w-1/2 p-4">
-                    <img className="w-64 h-64 object-cover align-center" src={`${apiUrl}${image.url}`} alt={image.name}/>
-                    
-                </div>
-                {/* DESCRIPTION */}
-                <div className="flex flex-col justify-center content-center w-full sm:w-1/2  py-4 px-8 sm:px-4">
-                    <h1 className="text-2xl mb-1 font-bold leading-6 text-gray-700">{name}</h1>
-                    <div className="flex flex-wrap flex-row justify-between items-center">
-                    <p className="text-gray-700 content-center text-sm mb-2">★★★★★</p>
-                    <p className="text-orange-500 text-2xl leading-7 p-2 w-24 text-center rounded-2xl font-black my-1">
-                    £{price}
-                </p>
-                    </div>
-                
-                
-                <p className="flex justify-center text-gray-700 text-md leading-6 py-1">{description}</p>
-                <span className="my-1 text-sm font-semibold text-gray-500">Type: {subcategory}</span>
-                
-                
-                <div className="flex flex-row">
-                <button onClick={() => handleClick(data.item)} className="w-full mx-1 mt-2 mb-1 bg-orange-500 hover:bg-orange-400 text-white font-bold py-2 px-4 border-b-4 border-gray-700 hover:border-gray-600 rounded">
-                {`Add to basket`}
-                </button>
-                <button  className="w-full mx-1 mt-2 mb-1 bg-orange-500 hover:bg-orange-400 text-white font-bold py-2 px-4 border-b-4 border-gray-700 hover:border-gray-600 rounded">
-                <span className="flex flex-row justify-center items-center"><img className="h-6 pr-4" src={basketIcon} alt="basket"/>Buy</span>
-                </button>
-                </div>
-               
-                </div>
-                
-            </div>
-        </main>
+      <main className="container mx-auto px-4 sm:px-8 flex-grow max-w-full">
+        <Spinner />
+      </main>
     )
+  if (error)
+    return (
+      <main className="container mx-auto px-4 sm:px-8 flex-grow max-w-full">
+        <p>Error :(</p>
+      </main>
+    )
+
+  const { name, description, price, image, subcategory, cat } = data.item
+  return (
+    <main className="flex flex-col content-center flex-grow">
+      <h1 className="text-2xl text-center my-6 font-medium text-gray-700 text-shadow">
+        You're in {cat.name}
+      </h1>
+      <div className="text-center flex flex-col-reverse sm:flex-row justify-around content-center">
+        <Link to={`/product/${cat._id}`}>
+          <button className="button-beep shadow appearance-none rounded-full border-2 border-purple-600 button text-md leading-none text-gray-600 font-semibold px-8 h-8 sm:mt-0 w-24 mx-auto sm:mx-0">
+            Back
+          </button>
+        </Link>
+        <Link to={`/`}>
+          <button className="button-beep shadow appearance-none rounded-full border-2 border-purple-600 button text-md leading-none text-gray-600 font-semibold px-8 h-8 mx-auto sm:mx-0 sm:mb-0 mb-4">
+            Change category
+          </button>
+        </Link>
+      </div>
+
+      <div className="flex flex-col sm:flex-row content-center my-10 w-full lg:w-4/5 xl:w-4/6 mx-auto px-0 sm:px-4 md:px-12">
+        {/* IMAGE */}
+        <div className="flex justify-center items-center w-full sm:w-1/2 p-4">
+          <img
+            className="w-64 h-64 object-cover align-center"
+            src={`${apiUrl}${image.url}`}
+            alt={image.name}
+          />
+        </div>
+        {/* DESCRIPTION */}
+        <div className="flex flex-col justify-center content-center w-full sm:w-1/2  py-4 px-8 sm:px-4">
+          <h1 className="text-xl text-gray-700 font-semibold leading-4 text-shadow">
+            {name}
+          </h1>
+          <div className="flex flex-wrap flex-row justify-between items-center pt-2 pb-2">
+            <p className="content-center text-purple-600 text-md">★★★★★</p>
+            <p className="text-gray-700 font-racing font-medium text-shadow text-2xl leading-6">
+              £{price}
+            </p>
+          </div>
+          <span className="my-1 text-sm font-semibold text-gray-500">
+            Type: {subcategory}
+          </span>
+          <p className="flex justify-center flex-grow text-gray-700 text-md leading-6">
+            {description}
+          </p>
+
+          <div className="flex flex-row mt-4">
+            <button
+              onClick={() => handleClick(data.item)}
+              className="button-beep mx-2 w-1/2 shadow appearance-none rounded-full bg-purple-600 button text-md leading-none text-white font-semibold px-8 py-2"
+            >
+              {`Add to basket`}
+            </button>
+            <button className="button-beep mx-2 w-1/2 shadow appearance-none rounded-full bg-purple-600 button text-md leading-none text-white font-semibold px-8 py-2">
+              <span className="flex flex-row justify-center items-center">
+                <img
+                  className="h-6 pr-4 fill-white"
+                  src={basketIcon}
+                  alt="basket"
+                />
+                Buy
+              </span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </main>
+  )
 }
 
 export default SingleItem

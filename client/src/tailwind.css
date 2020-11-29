@@ -19,6 +19,10 @@
     min-width: 16rem;
   }
 
+  .fill-white {
+    filter: invert(1) sepia(1) saturate(0) hue-rotate(-144deg);
+  }
+
   .top-24 {
     top: 6rem;
   }
