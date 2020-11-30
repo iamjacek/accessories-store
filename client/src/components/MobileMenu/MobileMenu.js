@@ -1,6 +1,5 @@
 import React from "react"
 import { NavLink } from "react-router-dom"
-import basket from "../../assets/shopping-cart.svg"
 
 const MobileMenu = ({ isOpen, toggleX }) => {
   return (

@@ -283,11 +283,7 @@ const CheckoutForm = (props) => {
             {/* CREDIT CARD INPUT */}
             <label className="text-left text-gray-700 py-4">
               Debit/Credit Card:
-              <CardElement
-                id="stripe__input"
-                onReady={(input) => input.focus()}
-                options={CARD_ELEMENT_OPTIONS}
-              />
+              <CardElement id="stripe__input" options={CARD_ELEMENT_OPTIONS} />
             </label>
 
             <button

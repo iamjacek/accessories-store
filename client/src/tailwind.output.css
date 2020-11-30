@@ -22828,7 +22828,21 @@ video {
 
 .close-basket {
   top: 2rem;
-  right: 1rem;
+  right: 2rem;
+}
+
+@media (min-width: 640px) {
+  .close-basket {
+    top: 2rem;
+    right: 4rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .close-basket {
+    top: 2.5rem;
+    right: 4rem;
+  }
 }
 
 .text-shadow {

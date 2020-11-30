@@ -76,7 +76,10 @@ const AuthNav = ({ handleSignout, basketOpen }) => {
               </NavLink>
             </div>
             <div className="flex flex-row items items-center">
-              <button className="px-3 py-1 mx-2" onClick={toggleBasket}>
+              <button
+                className="px-3 py-1 mx-2 button-beep"
+                onClick={toggleBasket}
+              >
                 <img src={basketIcon} alt="basket-trolley" className="h-6" />
               </button>
 
@@ -186,7 +189,10 @@ const UnAuthNav = ({ basketOpen }) => {
             </div>
 
             <div className="flex flex-row items-center">
-              <button className="px-3 py-1 mx-2" onClick={toggleBasket}>
+              <button
+                className="px-3 py-1 mx-2 button-beep"
+                onClick={toggleBasket}
+              >
                 <img
                   src={basketIcon}
                   alt="basket-trolley"
@@ -195,7 +201,7 @@ const UnAuthNav = ({ basketOpen }) => {
               </button>
               <NavLink
                 to="/signin"
-                activeClassName="text-orange-500"
+                activeClassName="italic"
                 className="hidden md:block hidden md:block hover:underline text-md text-gray-700 hover:text-purple-600 mr-4 active:text-xl"
               >
                 Sign in

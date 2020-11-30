@@ -58,15 +58,15 @@ const Basket = ({ toAdd, basketOpen, toggleBasketItself }) => {
     <div
       className={
         basketOpen
-          ? "absolute opacity-1 z-50 w-full transition-opacity duration-300 top-24 right-0 left-0"
-          : "absolute opacity-0 z-50 w-full transition-opacity duration-300 top-24 right-0 left-0 transform -translate-x-full"
+          ? "absolute z-50 w-full transition-transform duration-300 top-24 right-0 left-0 transform translate-x-0 ease-out"
+          : "absolute z-50 w-full top-24 right-0 left-0 transform -translate-x-full transition-transform duration-300 ease-in"
       }
     >
       <div className="bg-white border border-4 border-gray-700 rounded-3xl mx-4 sm:mx-12 mt-4 py-4">
         <div className="flex flex-col align-center px-2 py-4">
           <div
             onClick={toggleBasketItself}
-            className="absolute cursor-pointer close-basket flex flex-row mx-4 sm:mx-12 items-center bg-gray-100 p-2 rounded-xl"
+            className="absolute button-beep cursor-pointer close-basket flex flex-row mx-0 sm:mx-2 md:mx-4 lg:mx-8 items-center bg-gray-100 p-2 rounded-xl"
           >
             <img src={x} alt="close button" className="w-5 h-5" />
           </div>
@@ -98,7 +98,7 @@ const Basket = ({ toAdd, basketOpen, toggleBasketItself }) => {
                 </div>
                 <span
                   onClick={() => deleteItemFromBasket(item._id)}
-                  className="flex ml-4 self-center cursor-pointer text-red-700 font-bold text-bold text-2xl whitespace-pre-wrap"
+                  className="flex button-beep ml-4 self-center cursor-pointer text-red-700 font-bold text-bold text-2xl whitespace-pre-wrap"
                 >
                   {` `}&#x2715;
                 </span>
@@ -108,11 +108,11 @@ const Basket = ({ toAdd, basketOpen, toggleBasketItself }) => {
               Total: {calculatePrice(basketItems)}
             </p>
             <p className="flex justify-center">
-              <Link to="/checkout">
+              <Link to="/checkout" onClick={toggleBasketItself}>
                 {basketItems.length === 0 && (
                   <button
                     disabled
-                    className="mt-2 mb-1 button-beep leading-none bg-purple-600 text-md text-white font-semibold py-2 px-8 rounded-full opacity-50 cursor-not-allowed"
+                    className="mt-2 mb-1 button-beep leading-none bg-purple-600 text-md text-gray-300 font-semibold py-2 px-8 rounded-full opacity-75 cursor-not-allowed"
                   >
                     {`Checkout`}
                   </button>

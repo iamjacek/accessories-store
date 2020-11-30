@@ -75,19 +75,19 @@ const SingleItem = ({ passNewBasketItems, ...props }) => {
         </div>
         {/* DESCRIPTION */}
         <div className="flex flex-col justify-center content-center w-full sm:w-1/2  py-4 px-8 sm:px-4">
-          <h1 className="text-xl text-gray-700 font-semibold leading-4 text-shadow">
+          <h1 className="text-xl text-gray-700 font-semibold leading-5 text-shadow">
             {name}
           </h1>
-          <div className="flex flex-wrap flex-row justify-between items-center pt-2 pb-2">
+          <div className="flex flex-wrap flex-row justify-between items-center pt-4 pb-1">
             <p className="content-center text-purple-600 text-md">★★★★★</p>
             <p className="text-gray-700 font-racing font-medium text-shadow text-2xl leading-6">
               £{price}
             </p>
           </div>
-          <span className="my-1 text-sm font-semibold text-gray-500">
+          <span className="my-2 text-sm font-semibold text-gray-500">
             Type: {subcategory}
           </span>
-          <p className="flex justify-center flex-grow text-gray-700 text-md leading-6">
+          <p className="flex text-left flex-grow text-gray-700 text-md leading-6">
             {description}
           </p>
 

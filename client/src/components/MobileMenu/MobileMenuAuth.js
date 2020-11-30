@@ -1,6 +1,5 @@
 import React from "react"
 import { NavLink } from "react-router-dom"
-import basket from "../../assets/shopping-cart.svg"
 
 const MobileMenuAuth = ({ isOpen, toggleX, toSignOut }) => {
   const handleClick = () => {
@@ -8,7 +7,6 @@ const MobileMenuAuth = ({ isOpen, toggleX, toSignOut }) => {
     toSignOut()
   }
 
-  const handleSignout = () => {}
   return (
     <div
       className={`${
