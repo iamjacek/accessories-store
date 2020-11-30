@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react"
 import Alert from "./Alert"
 import {
   calculatePrice,
-  getBasket,
   clearBasket,
   calculateAmount,
   getToken,
@@ -22,9 +21,6 @@ import {
 } from "@stripe/react-stripe-js"
 
 const apiUrl = process.env.API_URL || "http://localhost:1337"
-const stripePromise = loadStripe(
-  "pk_test_51HZcgAIP5TcR6XA3gYHb8uWkOI7S4zrZEFeTdXrRbMhyzZj3r7cxhFmDhuEUnScKoG9FHz3MQOcI6vHU7HGmXAfb00yJnhMRid"
-)
 
 const CARD_ELEMENT_OPTIONS = {
   hidePostalCode: true,
@@ -47,7 +43,7 @@ const CARD_ELEMENT_OPTIONS = {
   },
 }
 
-const CheckoutForm = (props) => {
+const CheckoutForm = ({ newBasketItems, ...props }) => {
   const [inputValues, setInputValues] = useState({
     fullName: "",
     address: "",
@@ -66,8 +62,14 @@ const CheckoutForm = (props) => {
   const elements = useElements()
 
   useEffect(() => {
-    setBasketItems(getBasket())
+    setBasketItems(newBasketItems)
+    // setBasketItems(getBasket())
   }, [])
+
+  useEffect(() => {
+    setBasketItems(newBasketItems)
+    // setBasketItems(getBasket())
+  }, [newBasketItems])
 
   const handleChange = (event) => {
     const { name, value } = event.target
@@ -139,9 +141,11 @@ const CheckoutForm = (props) => {
         setModal(false)
         showAlert("Your order has been successfully submitted")
         clearBasket()
-        props.history.push("/")
-        //clear basket
-        window.location.reload()
+        setTimeout(() => {
+          props.history.push("/")
+          //clear basket
+          window.location.reload()
+        }, 4000)
       })
       .catch((error) => {
         console.error("timeout exceeded")
@@ -392,10 +396,24 @@ const ConfirmationModal = ({
   </div>
 )
 
-const Checkout = (props) => (
-  <Elements stripe={stripePromise}>
-    <CheckoutForm {...props} />
-  </Elements>
-)
+const Checkout = ({ newBasketItems, ...props }) => {
+  const [allBasketItems, setAllBasketItems] = useState([])
+
+  const [stripePromise, setStripePromise] = useState(() =>
+    loadStripe(
+      "pk_test_51HZcgAIP5TcR6XA3gYHb8uWkOI7S4zrZEFeTdXrRbMhyzZj3r7cxhFmDhuEUnScKoG9FHz3MQOcI6vHU7HGmXAfb00yJnhMRid"
+    )
+  )
+
+  useEffect(() => {
+    setAllBasketItems(newBasketItems)
+  }, [newBasketItems])
+
+  return (
+    <Elements stripe={stripePromise}>
+      <CheckoutForm {...props} newBasketItems={allBasketItems} />
+    </Elements>
+  )
+}
 
 export default withRouter(Checkout)

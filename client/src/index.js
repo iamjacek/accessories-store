@@ -31,12 +31,12 @@ const client = new ApolloClient({
   cache: new InMemoryCache(),
 })
 
-const PrivateRoute = ({ component: Component, ...rest }) => (
+const PrivateRoute = ({ component: Component, basketItems, ...rest }) => (
   <Route
     {...rest}
-    render={(props) =>
+    render={(basketItems, ...props) =>
       getToken() !== null ? (
-        <Component {...props} />
+        <Component {...props} newBasketItems={basketItems} {...rest} />
       ) : (
         <Redirect
           to={{
@@ -61,6 +61,11 @@ const Root = () => {
     counter++
   }
 
+  const [basketItems, setBasketItems] = useState([])
+  const sendAllBasketItems = (items) => {
+    setBasketItems(items)
+  }
+
   return (
     <Router>
       <ApolloProvider client={client}>
@@ -69,12 +74,17 @@ const Root = () => {
           toAdd={newItem}
           basketOpen={isBasketOpen}
           toggleBasketItself={() => setIsBasketOpen(!isBasketOpen)}
+          passAllBasketItems={sendAllBasketItems}
         />
         <Switch>
           <Route component={App} exact path="/" />
           <Route component={Signin} path="/signin" />
           <Route component={Signup} path="/signup" />
-          <PrivateRoute component={Checkout} path="/checkout" />
+          <PrivateRoute
+            component={Checkout}
+            path="/checkout"
+            newBasketItems={basketItems}
+          />
           <Route
             path="/product/:id"
             render={(props) => (

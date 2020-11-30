@@ -3,7 +3,12 @@ import { calculatePrice, getBasket, setBasket } from "../../utils"
 import { Link } from "react-router-dom"
 import x from "../../assets/cancel.svg"
 
-const Basket = ({ toAdd, basketOpen, toggleBasketItself }) => {
+const Basket = ({
+  toAdd,
+  basketOpen,
+  toggleBasketItself,
+  passAllBasketItems,
+}) => {
   const [basketItems, setBasketItems] = useState([])
 
   const addToCart = (item) => {
@@ -26,6 +31,10 @@ const Basket = ({ toAdd, basketOpen, toggleBasketItself }) => {
     }
   }
 
+  const sendAllBasketItems = (items) => {
+    passAllBasketItems(items)
+  }
+
   useEffect(() => {
     setBasketItems(getBasket())
   }, [])
@@ -33,6 +42,7 @@ const Basket = ({ toAdd, basketOpen, toggleBasketItself }) => {
   //basket to localstorage
   useEffect(() => {
     setBasket(basketItems)
+    sendAllBasketItems(basketItems)
   }, [basketItems])
 
   //get basket from props
