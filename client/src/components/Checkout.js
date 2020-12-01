@@ -189,35 +189,36 @@ const CheckoutForm = ({ newBasketItems, ...props }) => {
   return (
     <main className="flex flex-col justify-center items-center flex-grow w-full text-center">
       {/* checkout */}
-      <div className="flex flex-col align-center">
-        <h1 className="text-3xl my-6 font-extrabold text-gray-700">CHECKOUT</h1>
-      </div>
+      <div className="flex flex-col align-center"></div>
       {basketItems.length > 0 ? (
         <React.Fragment>
-          <div className="align-center mx-4 sm:max-w-screen-sm md:max-w-screen-md flex flex-col bg-gray-200 py-8 px-4 md:px-12 rounded-lg">
-            <p className="text-orange-500 flex justify-center font-semibold text-lg mb-4">
-              {inTheBasket()} items for checkout
+          <div className="align-center mx-4 sm:max-w-screen-sm md:max-w-screen-md flex flex-col bg-white border border-4 border-gray-700 rounded-3xl py-8 px-4 md:px-12 rounded-lg">
+            <h1 className="text-2xl my-2 font-medium text-gray-700 text-shadow">
+              CHECKOUT
+            </h1>
+            <p className="mb-4 text-gray-500 flex justify-center font-medium text-md">
+              {inTheBasket()} item{inTheBasket() > 1 ? "s" : ""} for checkout
             </p>
 
             <div className="flex justify-center flex-col">
               {basketItems.map((item) => (
                 <div
                   key={item._id}
-                  className="flex content-center mb-2 px-4 py-1 rounded-lg"
+                  className="flex content-center mb-2 px-4 py-1 rounded-lg w-full"
                 >
-                  <div className="text-gray-700 text-md flex content-center justify-between">
-                    <div>
-                      {item.name} x {item.quantity} -
-                    </div>
-                    <span className="text-gray-800 font-semibold">
-                      ${(item.quantity * item.price).toFixed(2)}
+                  <div className="text-gray-700 text-md flex content-center justify-between whitespace-pre-wrap w-full">
+                    <span className="italic">
+                      {item.name} x {item.quantity} {` `}
+                    </span>
+                    <span className="font-bold ml-4">
+                      £{(item.quantity * item.price).toFixed(2)}
                     </span>
                   </div>
                 </div>
               ))}
             </div>
 
-            <p className="flex justify-center text-2xl font-extrabold py-1 text-red-700">
+            <p className="flex justify-center text-gray-700 font-racing font-medium text-2xl leading-6 py-1 mt-4">
               Total: {calculatePrice(basketItems)}
             </p>
           </div>
