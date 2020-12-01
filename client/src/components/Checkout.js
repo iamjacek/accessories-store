@@ -302,7 +302,9 @@ const CheckoutForm = ({ newBasketItems, ...props }) => {
             <button
               type="submit"
               disabled={!stripe && orderProcessing}
-              className="mt-4 mb-1 mx-4 md:mx-auto md:w-40 button-beep leading-none bg-purple-600 text-md text-white font-semibold py-2 px-8 rounded-full"
+              className={`mt-4 mb-1 mx-4 md:mx-auto md:w-40 button-beep leading-none bg-purple-600 text-md text-white font-semibold py-2 px-8 rounded-full ${
+                orderProcessing ? "opacity-50" : ""
+              }`}
             >
               Submit
             </button>
@@ -349,9 +351,9 @@ const ConfirmationModal = ({
       className="bg-white p-8 max-w-2xl rounded-xl mt-auto mb-auto"
       onBlur={closeModal}
     >
-      <h2 className="text-3xl font-extrabold py-1 text-gray-700">
-        Confirm Your Order
-      </h2>
+      <h1 className="text-2xl my-2 font-medium text-gray-700 text-shadow">
+        CONFIRM YOUR ORDER
+      </h1>
       {/* SPINNER */}
       {orderProcessing && (
         <>
@@ -359,26 +361,28 @@ const ConfirmationModal = ({
             <Spinner />
           </div>
           <h2 className="text-xl font-semibold mt-12 mb-2 text-gray-700">
-            Please wait while we are taking your order and processing a
-            payment...
+            Processing order...
           </h2>
         </>
       )}
       {!orderProcessing && (
         <>
-          <div className="flex flex-col mx-2 rounded-xl p-2 content-center items-center bg-gray-200 my-4">
+          <div className="flex flex-col mx-2 rounded-xl px-4 py-4 content-center items-center bg-gray-100 my-4">
             {basketItems.map((item) => (
-              <div key={item._id} className="px-1 py-1">
-                <span className="text-gray-700">
-                  {item.name} x {item.quantity} -{" "}
+              <div
+                key={item._id}
+                className="text-gray-700 text-md flex content-center justify-between whitespace-pre-wrap w-full"
+              >
+                <span className="text-gray-700 italic">
+                  {item.name} x {item.quantity}{" "}
                 </span>
-                <span className="text-red-700 font-semibold">
+                <span className="font-bold ml-4">
                   ${(item.quantity * item.price).toFixed(2)}
                 </span>
               </div>
             ))}
             <div>
-              <p className="text-2xl font-extrabold py-1 text-red-700">
+              <p className="text-2xl font-racing pt-2 text-red-700">
                 Total: {calculatePrice(basketItems)}
               </p>
             </div>
@@ -387,14 +391,15 @@ const ConfirmationModal = ({
             <div className="p-2 flex flex-row justify-center">
               <button
                 disabled={orderProcessing}
-                className="bg-red-700 text-white mx-2 px-8 py-3 rounded-md"
+                className="bg-red-700 text-white text-md mx-2 px-8 py-3 rounded-md button-beep font-semibold"
                 onClick={handleSubmitOrder}
               >
+                {/* className="mt-4 mb-1 mx-4 md:mx-auto md:w-40 button-beep leading-none bg-purple-600 text-md text-white font-semibold py-2 px-8 rounded-full" */}
                 Pay Now
               </button>
               <button
                 disabled={orderProcessing}
-                className="bg-gray-300 text-gray-700 mx-2 px-8 py-3 rounded-md"
+                className="bg-gray-200 text-gray-700 mx-2 px-8 py-3 rounded-md font-semibold hover:bg-gray-300"
                 onClick={closeModal}
               >
                 Cancel
