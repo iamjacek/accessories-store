@@ -193,7 +193,7 @@ const CheckoutForm = ({ newBasketItems, ...props }) => {
       <div className="flex flex-col align-center"></div>
       {basketItems.length > 0 ? (
         <React.Fragment>
-          <div className="align-center mx-4 sm:max-w-screen-sm md:max-w-screen-md flex flex-col bg-white border border-4 border-gray-700 rounded-3xl py-8 px-4 md:px-12 rounded-lg">
+          <div className="align-center my-8 mx-4 sm:max-w-screen-sm md:max-w-screen-md flex flex-col bg-white border border-4 border-gray-700 rounded-3xl py-8 px-4 md:px-12 rounded-lg">
             <h1 className="text-2xl my-2 font-medium text-gray-700 text-shadow">
               CHECKOUT
             </h1>
@@ -225,14 +225,14 @@ const CheckoutForm = ({ newBasketItems, ...props }) => {
           </div>
 
           <form
-            className="align-center mx-4 sm:max-w-screen-sm md:max-w-screen-md lg:w-3/5 flex flex-col bg-gray-100 py-8 px-4 md:px-12 my-12 rounded-lg"
+            className="align-center mx-4 sm:max-w-screen-sm md:max-w-screen-md lg:w-3/5 flex flex-col bg-gray-100 py-8 px-4 md:px-12 my-8 rounded-lg"
             onSubmit={handleConfirmOrder}
           >
             <Alert show={alert} message={alertMessage} />
             <h1 className="text-2xl my-2 font-medium text-gray-700 text-shadow">
               SHIPPING FORM
             </h1>
-            <p className="mb-10 text-gray-700 flex justify-center font-medium text-md">
+            <p className="mb-10 text-gray-700 flex justify-center font-medium text-md text-shadow">
               Please fill in your full name and shipping address
             </p>
 
@@ -309,14 +309,16 @@ const CheckoutForm = ({ newBasketItems, ...props }) => {
           </form>
         </React.Fragment>
       ) : (
-        <div className="my-12 align-center mx-4 sm:max-w-screen-sm md:max-w-screen-md flex flex-col bg-gray-200 py-8 px-4 md:px-12 rounded-lg">
-          <h2 className="text-xl my-2 font-extrabold text-red-700">
+        <div className="align-center mx-4 sm:max-w-screen-sm md:max-w-screen-md lg:w-3/5 flex flex-col bg-gray-100 py-8 px-4 md:px-12 my-12 rounded-lg">
+          <h2 className="text-2xl my-2 font-medium text-gray-700 text-shadow">
             Your basket is empty
           </h2>
-          <p className="text-sm my-1 text-gray-600">Add some accessories!</p>
+          <p className="mb-6 text-gray-700 flex justify-center font-medium text-md">
+            Add some accessories!
+          </p>
           <Link
             to="/"
-            className="mt-10 mb-1 bg-orange-500 hover:bg-orange-400 text-white font-bold py-2 px-8 border-b-4 border-gray-700 hover:border-gray-600 rounded"
+            className="mt-4 mb-1 mx-4 md:mx-auto md:w-40 button-beep leading-none bg-purple-600 text-md text-white font-semibold py-2 px-8 rounded-full"
           >
             Browse
           </Link>

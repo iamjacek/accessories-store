@@ -76,21 +76,23 @@ const Signup = (props) => {
       {/* SIGN UP */}
 
       <form
-        className="relative mx-4 w-full sm:max-w-screen-sm md:max-w-screen-md flex flex-col bg-gray-200 py-8 px-4 md:px-12 my-12 rounded-lg"
+        className="align-center my-auto sm:mx-10 sm:max-w-screen-sm md:max-w-screen-md w-11/12 lg:w-3/5 flex flex-col bg-gray-100 py-8 px-6 md:px-12 rounded-lg"
         onSubmit={handleSubmit}
       >
         <Alert show={alert} message={alertMessage} />
         <div className="mb-2 flex flex-col align-center">
-          <h1 className="text-4xl font-bold text-gray-700">Get Started!</h1>
-          <p className="text-sm mt-0 mb-4 text-gray-700">
-            Sign up to order phone accessories!
+          <h1 className="text-2xl my-2 font-medium text-gray-700 text-shadow">
+            LET'S GET STARTED
+          </h1>
+          <p className="mb-10 text-gray-700 flex justify-center font-medium text-sm text-shadow">
+            Register to order phone accessories!
           </p>
         </div>
         {/* INPUT */}
-        <label className="text-left text-gray-700">
+        <label className="text-left text-gray-700 text-md italic">
           Username:
           <input
-            className="rounded w-full text-md text-gray-700 p-2 mb-2"
+            className="rounded w-full text-md text-gray-700 px-4 py-2 mb-4 shadow"
             id="username"
             type="text"
             name="username"
@@ -98,10 +100,10 @@ const Signup = (props) => {
             onChange={handleChange}
           />
         </label>
-        <label className="text-left text-gray-700">
+        <label className="text-left text-gray-700 text-md italic">
           Email:
           <input
-            className="rounded w-full text-md text-gray-700 p-2 mb-2"
+            className="rounded w-full text-md text-gray-700 px-4 py-2 mb-4 shadow"
             id="email"
             type="email"
             name="email"
@@ -109,10 +111,10 @@ const Signup = (props) => {
             onChange={handleChange}
           />
         </label>
-        <label className="text-left text-gray-700">
+        <label className="text-left text-gray-700 text-md italic">
           Password:
           <input
-            className="rounded w-full text-md text-gray-700 p-2 mb-2"
+            className="rounded w-full text-md text-gray-700 px-4 py-2 mb-4 shadow"
             id="password"
             type="password"
             name="password"
@@ -124,7 +126,7 @@ const Signup = (props) => {
         <button
           type="submit"
           disabled={loading}
-          className="mt-6 mb-1 bg-orange-500 hover:bg-orange-400 text-white font-bold py-2 px-8 border-b-4 border-gray-700 hover:border-gray-600 rounded"
+          className="mt-4 mb-1 mx-4 md:mx-auto md:w-40 button-beep leading-none bg-purple-600 text-md text-white font-semibold py-2 px-8 rounded-full"
         >
           Submit
         </button>

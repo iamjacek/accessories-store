@@ -72,22 +72,24 @@ const Signin = (props) => {
   }
 
   return (
-    <div className="flex justify-center flex-grow w-full text-center">
+    <div className="flex flex-grow flex-col items-center w-full text-center">
       {/* LOG IN */}
 
       <form
-        className="relative mx-4 w-full sm:max-w-screen-sm md:max-w-screen-md flex flex-col bg-gray-200 py-8 px-4 md:px-12 my-12 rounded-lg"
+        className="align-center my-auto sm:mx-10 sm:max-w-screen-sm md:max-w-screen-md w-11/12 lg:w-3/5 flex flex-col bg-gray-100 py-8 px-6 md:px-12 rounded-lg"
         onSubmit={handleSubmit}
       >
         <Alert show={alert} message={alertMessage} />
         <div className="mb-2 flex flex-col align-center">
-          <h1 className="text-4xl font-bold text-gray-700">Welcome Back!</h1>
+          <h1 className="text-2xl my-2 font-medium text-gray-700 text-shadow">
+            WELCOME BACK
+          </h1>
         </div>
         {/* INPUT */}
-        <label className="text-left text-gray-700">
+        <label className="text-left text-gray-700 text-md italic">
           Username:
           <input
-            className="rounded w-full text-md text-gray-700 p-2 mb-2"
+            className="rounded w-full text-md text-gray-700 px-4 py-2 mb-4 shadow"
             id="username"
             type="text"
             name="username"
@@ -95,10 +97,10 @@ const Signin = (props) => {
             onChange={handleChange}
           />
         </label>
-        <label className="text-left text-gray-700">
+        <label className="text-left text-gray-700 text-md italic">
           Password:
           <input
-            className="rounded w-full text-md text-gray-700 p-2 mb-2"
+            className="rounded w-full text-md text-gray-700 px-4 py-2 mb-4 shadow"
             id="password"
             type="password"
             name="password"
@@ -110,11 +112,12 @@ const Signin = (props) => {
         <button
           type="submit"
           disabled={loading}
-          className="mt-6 mb-1 bg-orange-500 hover:bg-orange-400 text-white font-bold py-2 px-8 border-b-4 border-gray-700 hover:border-gray-600 rounded"
+          className="mt-4 mb-1 mx-4 md:mx-auto md:w-40 button-beep leading-none bg-purple-600 text-md text-white font-semibold py-2 px-8 rounded-full"
         >
           Submit
         </button>
       </form>
+      {/* <div className="align-center flex flex-grow"></div> */}
     </div>
   )
 }
