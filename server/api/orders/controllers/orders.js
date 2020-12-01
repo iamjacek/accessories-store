@@ -72,6 +72,7 @@ module.exports = {
         ctx.state.user._id
       }, Name: ${fullName}, Address: ${address}`,
       source: token,
+      receipt_email: confirmationEmail,
     });
 
     // Create order in database
