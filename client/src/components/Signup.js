@@ -44,10 +44,10 @@ const Signup = (props) => {
         // Handle success.
         setLoading(false)
         setToken(response.data.jwt)
-        showAlert(`Success! You have been registered with beepline.`)
+        showAlert(`Success! You have been registered.`)
         setTimeout(() => {
           redirectUser("/")
-        }, 3000)
+        }, 4000)
       })
       .catch((error) => {
         // Handle error.

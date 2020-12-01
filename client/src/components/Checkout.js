@@ -103,11 +103,14 @@ const CheckoutForm = ({ newBasketItems, ...props }) => {
   const showAlert = (alertMessage) => {
     setAllertMessage(alertMessage)
     setAlert(true)
+  }
 
-    setTimeout(() => {
-      setAlert(false)
-      setAllertMessage("")
-    }, 4000)
+  const closeAlert = () => {
+    setAlert(false)
+    setAllertMessage("")
+    props.history.push("/")
+    //clear basket
+    window.location.reload()
   }
 
   const stripeTokenHandler = async (tokenElement) => {
@@ -142,11 +145,6 @@ const CheckoutForm = ({ newBasketItems, ...props }) => {
         setModal(false)
         showAlert("Your order has been successfully submitted")
         clearBasket()
-        setTimeout(() => {
-          props.history.push("/")
-          //clear basket
-          window.location.reload()
-        }, 4000)
       })
       .catch((error) => {
         console.error("timeout exceeded")
@@ -194,7 +192,7 @@ const CheckoutForm = ({ newBasketItems, ...props }) => {
       {basketItems.length > 0 ? (
         <React.Fragment>
           <div className="align-center my-8 mx-4 sm:max-w-screen-sm md:max-w-screen-md flex flex-col bg-white border border-4 border-gray-700 rounded-3xl py-8 px-4 md:px-12 rounded-lg">
-            <h1 className="text-2xl my-2 font-medium text-gray-700 text-shadow">
+            <h1 className="text-2xl mb-2 font-medium text-gray-700 text-shadow">
               CHECKOUT
             </h1>
             <p className="mb-6 text-gray-500 flex justify-center font-medium text-md">
@@ -228,7 +226,12 @@ const CheckoutForm = ({ newBasketItems, ...props }) => {
             className="align-center mx-4 sm:max-w-screen-sm md:max-w-screen-md lg:w-3/5 flex flex-col bg-gray-100 py-8 px-4 md:px-12 my-8 rounded-lg"
             onSubmit={handleConfirmOrder}
           >
-            <Alert show={alert} message={alertMessage} />
+            <Alert
+              show={alert}
+              message={alertMessage}
+              closeAlert
+              closeMessageAndGoHome={closeAlert}
+            />
             <h1 className="text-2xl my-2 font-medium text-gray-700 text-shadow">
               SHIPPING FORM
             </h1>
@@ -346,11 +349,8 @@ const ConfirmationModal = ({
   handleSubmitOrder,
   basketItems,
 }) => (
-  <div className="fixed top-0 left-0 w-full h-full bg-gray-700 bg-opacity-75 flex content-center justify-center">
-    <div
-      className="bg-white p-8 max-w-2xl rounded-xl mt-auto mb-auto"
-      onBlur={closeModal}
-    >
+  <div className="fixed z-50 top-0 left-0 w-full h-full bg-gray-700 bg-opacity-75 flex content-center justify-center">
+    <div className="bg-white p-8 max-w-2xl rounded-xl my-auto">
       <h1 className="text-2xl my-2 font-medium text-gray-700 text-shadow">
         CONFIRM YOUR ORDER
       </h1>

@@ -42,12 +42,10 @@ const Signin = (props) => {
         // Handle success.
         setLoading(false)
         setToken(response.data.jwt)
-        showAlert(
-          `Welcome back ${inputValues.username}! You are successfully logged in.`
-        )
+        showAlert(`Welcome back ${inputValues.username}!`)
         setTimeout(() => {
           redirectUser("/")
-        }, 3000)
+        }, 4000)
       })
       .catch((error) => {
         // Handle error.

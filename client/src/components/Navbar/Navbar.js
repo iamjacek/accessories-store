@@ -38,12 +38,12 @@ const AuthNav = ({ handleSignout, basketOpen }) => {
   }
 
   return (
-    <nav className="bg-white pb-2 px-5 sm:px-12">
+    <nav className="w-full bg-white pb-2 px-5 sm:px-6 md:px-12">
       <div className="w-full flex items-center justify-between flex-col">
         <div className="container w-full flex items-center justify-between flex-row">
           <NavLink
             to="/"
-            className="flex flex-col items-center flex-shrink-0 text-white mr-6 -mt-10 -mb-1"
+            className="flex flex-col transform scale-75 items-center flex-shrink-0 text-white mr-6 -mt-10 -mb-1"
           >
             <img
               src={line}
@@ -80,20 +80,24 @@ const AuthNav = ({ handleSignout, basketOpen }) => {
                 className="px-3 py-1 mx-2 button-beep"
                 onClick={toggleBasket}
               >
-                <img src={basketIcon} alt="basket-trolley" className="h-6" />
+                <img
+                  src={basketIcon}
+                  alt="basket-trolley"
+                  className="h-6 w-6"
+                />
               </button>
 
               <NavLink
                 to="/checkout"
                 activeClassName="italic"
-                className="hidden md:block hidden md:block hover:underline text-md text-gray-700 hover:text-purple-600 mr-4 active:text-xl"
+                className="hidden md:block hidden md:block hover:underline text-md text-gray-700 hover:text-purple-600 mr-4 "
               >
                 Checkout
               </NavLink>
 
               <button
                 onClick={handleSignout}
-                className="bg-purple-600 hidden hidden md:block md:block inline-block mt-5 text-md font-semibold px-8 py-2 leading-none rounded-full text-white mt-4 sm:mt-0 shadow button-beep"
+                className="bg-purple-600 hidden md:block mt-5 text-md font-semibold px-8 py-2 leading-none rounded-full text-white mt-4 sm:mt-0 shadow button-beep"
               >
                 Sign out
               </button>
@@ -155,7 +159,7 @@ const UnAuthNav = ({ basketOpen }) => {
         <div className="container w-full flex items-center justify-between flex-row">
           <NavLink
             to="/"
-            className="flex transform scale-75 flex-col items-center flex-shrink-0 text-white mr-0 md:mr-6 -mt-10 -mb-1"
+            className="flex flex-col transform scale-75 items-center flex-shrink-0 text-white mr-0 md:mr-6 -mt-10 -mb-1"
           >
             <img
               src={line}
@@ -190,25 +194,25 @@ const UnAuthNav = ({ basketOpen }) => {
 
             <div className="flex flex-row items-center">
               <button
-                className="px-3 py-1 mx-2 button-beep"
+                className="mx-2 button-beep h-6 w-6 sm:mr-6"
                 onClick={toggleBasket}
               >
                 <img
                   src={basketIcon}
                   alt="basket-trolley"
-                  className="h-6"
-                ></img>
+                  className="h-6 w-6"
+                />
               </button>
               <NavLink
                 to="/signin"
                 activeClassName="italic"
-                className="hidden md:block hidden md:block hover:underline text-md text-gray-700 hover:text-purple-600 mr-4 active:text-xl"
+                className="hidden md:block hidden md:block hover:underline text-md text-gray-700 hover:text-purple-600 mr-4 "
               >
                 Sign in
               </NavLink>
               <NavLink
                 to="/signup"
-                className="bg-purple-600 hidden hidden md:block md:block inline-block mt-5 text-md font-semibold px-8 py-2 leading-none rounded-full text-white mt-4 sm:mt-0 shadow button-beep"
+                className="bg-purple-600 hidden md:block  mt-5 text-md font-semibold px-8 py-2 leading-none rounded-full text-white mt-4 sm:mt-0 shadow button-beep"
               >
                 Sign up
               </NavLink>
@@ -231,7 +235,10 @@ const UnAuthNav = ({ basketOpen }) => {
                       xmlns="http://www.w3.org/2000/svg"
                     >
                       <title>Menu</title>
-                      <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" />
+                      <path
+                        fill="#4a5568"
+                        d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"
+                      />
                     </svg>
                   </div>
                 )}
