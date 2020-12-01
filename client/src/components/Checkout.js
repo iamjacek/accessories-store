@@ -27,11 +27,12 @@ const CARD_ELEMENT_OPTIONS = {
   style: {
     base: {
       color: "#303238",
+      width: "100%",
       fontSize: "16px",
-      fontFamily: '"Open Sans", sans-serif',
+      fontFamily: '"Montserrat", sans-serif',
       fontSmoothing: "antialiased",
       "::placeholder": {
-        color: "#CFD7DF",
+        color: "#a0aec0",
       },
     },
     invalid: {
@@ -196,7 +197,7 @@ const CheckoutForm = ({ newBasketItems, ...props }) => {
             <h1 className="text-2xl my-2 font-medium text-gray-700 text-shadow">
               CHECKOUT
             </h1>
-            <p className="mb-4 text-gray-500 flex justify-center font-medium text-md">
+            <p className="mb-6 text-gray-500 flex justify-center font-medium text-md">
               {inTheBasket()} item{inTheBasket() > 1 ? "s" : ""} for checkout
             </p>
 
@@ -224,16 +225,22 @@ const CheckoutForm = ({ newBasketItems, ...props }) => {
           </div>
 
           <form
-            className="align-center mx-4 sm:max-w-screen-sm md:max-w-screen-md flex flex-col bg-gray-200 py-8 px-4 md:px-12 my-12 rounded-lg"
+            className="align-center mx-4 sm:max-w-screen-sm md:max-w-screen-md lg:w-3/5 flex flex-col bg-gray-100 py-8 px-4 md:px-12 my-12 rounded-lg"
             onSubmit={handleConfirmOrder}
           >
             <Alert show={alert} message={alertMessage} />
+            <h1 className="text-2xl my-2 font-medium text-gray-700 text-shadow">
+              SHIPPING FORM
+            </h1>
+            <p className="mb-10 text-gray-700 flex justify-center font-medium text-md">
+              Please fill in your full name and shipping address
+            </p>
 
             {/* INPUT */}
-            <label className="text-left text-gray-700">
+            <label className="text-left text-gray-700 text-md italic">
               Full name:
               <input
-                className="rounded w-full text-md text-gray-700 p-2 mb-2"
+                className="rounded w-full text-md text-gray-700 px-4 py-2 mb-4 shadow"
                 id="fullName"
                 type="text"
                 name="fullName"
@@ -241,10 +248,10 @@ const CheckoutForm = ({ newBasketItems, ...props }) => {
                 onChange={handleChange}
               />
             </label>
-            <label className="text-left text-gray-700">
-              Shipping address:
+            <label className="text-left text-gray-700 text-md italic">
+              Shipping address (with house number):
               <input
-                className="rounded w-full text-md text-gray-700 p-2 mb-2"
+                className="rounded w-full text-md text-gray-700 px-4 py-2 mb-4 shadow"
                 id="address"
                 type="text"
                 name="address"
@@ -252,10 +259,10 @@ const CheckoutForm = ({ newBasketItems, ...props }) => {
                 onChange={handleChange}
               />
             </label>
-            <label className="text-left text-gray-700">
+            <label className="text-left text-gray-700 text-md italic">
               Post Code:
               <input
-                className="rounded w-full text-md text-gray-700 p-2 mb-2"
+                className="rounded w-full text-md text-gray-700 px-4 py-2 mb-4 shadow"
                 id="postCode"
                 type="text"
                 name="postCode"
@@ -263,10 +270,10 @@ const CheckoutForm = ({ newBasketItems, ...props }) => {
                 onChange={handleChange}
               />
             </label>
-            <label className="text-left text-gray-700">
+            <label className="text-left text-gray-700 text-md italic">
               City:
               <input
-                className="rounded w-full text-md text-gray-700 p-2 mb-2"
+                className="rounded w-full text-md text-gray-700 px-4 py-2 mb-4 shadow"
                 id="city"
                 type="text"
                 name="city"
@@ -274,10 +281,10 @@ const CheckoutForm = ({ newBasketItems, ...props }) => {
                 onChange={handleChange}
               />
             </label>
-            <label className="text-left text-gray-700">
-              Email (when we will send confirmation):
+            <label className="text-left text-gray-700 text-md italic">
+              Email (to send order receipt):
               <input
-                className="rounded w-full text-md text-gray-700 p-2 mb-2"
+                className="rounded w-full text-md text-gray-700 px-4 py-2 mb-4 shadow"
                 id="confirmationEmail"
                 type="email"
                 name="confirmationEmail"
@@ -286,7 +293,8 @@ const CheckoutForm = ({ newBasketItems, ...props }) => {
               />
             </label>
             {/* CREDIT CARD INPUT */}
-            <label className="text-left text-gray-700 py-4">
+
+            <label className="text-left text-gray-700 text-md italic">
               Debit/Credit Card:
               <CardElement id="stripe__input" options={CARD_ELEMENT_OPTIONS} />
             </label>
@@ -294,7 +302,7 @@ const CheckoutForm = ({ newBasketItems, ...props }) => {
             <button
               type="submit"
               disabled={!stripe && orderProcessing}
-              className="mt-10 mb-1 bg-orange-500 hover:bg-orange-400 text-white font-bold py-2 px-8 border-b-4 border-gray-700 hover:border-gray-600 rounded"
+              className="mt-4 mb-1 mx-4 md:mx-auto md:w-40 button-beep leading-none bg-purple-600 text-md text-white font-semibold py-2 px-8 rounded-full"
             >
               Submit
             </button>
