@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 import Alert from "./Alert"
 import axios from "axios"
-
+import { Link } from "react-router-dom"
 import { setToken } from "../utils"
 
 const Signup = (props) => {
@@ -81,10 +81,10 @@ const Signup = (props) => {
       >
         <Alert show={alert} message={alertMessage} />
         <div className="mb-2 flex flex-col align-center">
-          <h1 className="text-2xl my-2 font-medium text-gray-700 text-shadow">
+          <h1 className="text-2xl mt-4 mb-0 font-medium text-gray-700 text-shadow">
             LET'S GET STARTED
           </h1>
-          <p className="mb-10 text-gray-700 flex justify-center font-medium text-sm text-shadow">
+          <p className="mb-4 text-gray-700 flex justify-center font-medium text-sm text-shadow">
             Register to order phone accessories!
           </p>
         </div>
@@ -126,10 +126,17 @@ const Signup = (props) => {
         <button
           type="submit"
           disabled={loading}
-          className="mt-4 mb-1 mx-4 md:mx-auto md:w-40 button-beep leading-none bg-purple-600 text-md text-white font-semibold py-2 px-8 rounded-full"
+          className="mt-4 mb-3 lg:mb-1 mx-4 md:mx-auto md:w-40 button-beep leading-none bg-purple-600 text-md text-white font-semibold py-2 px-8 rounded-full"
         >
           Submit
         </button>
+
+        <p className="mb-4 text-gray-700 flex justify-center font-medium text-sm text-shadow whitespace-pre-wrap">
+          Have account?{" "}
+          <Link to="/signin" className="text-purple-600 hover:underline">
+            Log in
+          </Link>
+        </p>
       </form>
     </div>
   )

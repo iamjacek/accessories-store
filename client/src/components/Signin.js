@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 import Alert from "./Alert"
 import axios from "axios"
-
+import { Link } from "react-router-dom"
 import { setToken } from "../utils"
 
 const Signin = (props) => {
@@ -79,7 +79,7 @@ const Signin = (props) => {
       >
         <Alert show={alert} message={alertMessage} />
         <div className="mb-2 flex flex-col align-center">
-          <h1 className="text-2xl my-2 font-medium text-gray-700 text-shadow">
+          <h1 className="text-2xl my-4 font-medium text-gray-700 text-shadow">
             WELCOME BACK
           </h1>
         </div>
@@ -110,10 +110,16 @@ const Signin = (props) => {
         <button
           type="submit"
           disabled={loading}
-          className="mt-4 mb-1 mx-4 md:mx-auto md:w-40 button-beep leading-none bg-purple-600 text-md text-white font-semibold py-2 px-8 rounded-full"
+          className="mt-6 mb-3 lg:mb-1 mx-4 md:mx-auto md:w-40 button-beep leading-none bg-purple-600 text-md text-white font-semibold py-2 px-8 rounded-full"
         >
           Submit
         </button>
+        <p className="mb-4 text-gray-700 flex justify-center font-medium text-sm text-shadow whitespace-pre-wrap">
+          Don't have account?{" "}
+          <Link to="/signup" className="text-purple-600 hover:underline">
+            Sign Up
+          </Link>
+        </p>
       </form>
       {/* <div className="align-center flex flex-grow"></div> */}
     </div>
