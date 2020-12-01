@@ -46,6 +46,10 @@
     right: 2rem;
   }
 
+  .translate-screen {
+    transform: translate(-100vw);
+  }
+
   @media (min-width: 640px) {
     .close-basket {
       top: 2rem;

@@ -68,8 +68,8 @@ const Basket = ({
     <div
       className={
         basketOpen
-          ? "absolute z-40 w-full transition-transform duration-300 top-24 right-0 left-0 transform translate-x-0 ease-out"
-          : "absolute z-40 w-full top-24 right-0 left-0 transform -translate-x-full transition-transform duration-300 ease-in"
+          ? "absolute z-40 w-full max-w-3xl mx-auto transition-transform duration-300 top-24 right-0 left-0 transform translate-x-0 ease-out"
+          : "absolute z-40 w-full max-w-3xl mx-auto top-24 right-0 left-0 translate-screen transition-transform duration-300 ease-in"
       }
     >
       <div className="bg-white border border-4 border-gray-700 rounded-3xl mx-4 sm:mx-12 mt-4 py-4">
