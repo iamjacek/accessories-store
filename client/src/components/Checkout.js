@@ -391,15 +391,14 @@ const ConfirmationModal = ({
             <div className="p-2 flex flex-row justify-center">
               <button
                 disabled={orderProcessing}
-                className="bg-red-700 text-white text-md mx-2 px-8 py-3 rounded-md button-beep font-semibold"
+                className="button-beep bg-red-700 text-white text-md mx-2 px-10 py-3 rounded-md  font-semibold"
                 onClick={handleSubmitOrder}
               >
-                {/* className="mt-4 mb-1 mx-4 md:mx-auto md:w-40 button-beep leading-none bg-purple-600 text-md text-white font-semibold py-2 px-8 rounded-full" */}
                 Pay Now
               </button>
               <button
                 disabled={orderProcessing}
-                className="bg-gray-200 text-gray-700 mx-2 px-8 py-3 rounded-md font-semibold hover:bg-gray-300"
+                className="bg-gray-200 text-gray-700 mx-2 px-6 py-3 rounded-md font-semibold hover:bg-gray-300"
                 onClick={closeModal}
               >
                 Cancel

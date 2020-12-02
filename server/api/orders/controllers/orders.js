@@ -68,9 +68,9 @@ module.exports = {
     const charge = await stripe.charges.create({
       amount: amount * 100,
       currency: "gbp",
-      description: `Order ${new Date(Date.now())} - User ${
-        ctx.state.user._id
-      }, Name: ${fullName}, Address: ${address}`,
+      description: `Order time: ${new Date(Date.now())}.
+      User ${fullName}, Address: ${address}, ${city}, ${postCode},
+      ********** Your order has been accepted.`,
       source: token,
       receipt_email: confirmationEmail,
     });
