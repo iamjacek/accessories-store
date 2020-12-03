@@ -10,8 +10,10 @@ const MobileMenuAuth = ({ isOpen, toggleX, toSignOut }) => {
   return (
     <div
       className={`${
-        isOpen ? "block" : "hidden"
-      } md:hidden pb-6 rounded-2xl w-full mt-2 flex flex-col flex-grow items-center bg-gray-100`}
+        isOpen
+          ? "transform translate-x-0 ease-out"
+          : "transform -translate-x-full ease-in"
+      } absolute transition-transform duration-300 top-24 z-40 md:hidden pb-6 rounded-2xl w-full mt-2 flex flex-col flex-grow items-center bg-gray-100`}
     >
       <NavLink
         onClick={toggleX}

@@ -119,7 +119,7 @@ const Footer = () => (
             id="footer-navi-2"
           >
             <a
-              className="text-gray-700  text-small hover:text-purple-600"
+              className="text-gray-700  text-small hover:text-purple-600 hover:underline"
               href="/disclaimer"
             >
               Disclaimer
@@ -130,7 +130,7 @@ const Footer = () => (
             id="footer-navi-2"
           >
             <a
-              className="text-gray-700  text-small hover:text-purple-600"
+              className="text-gray-700  text-small hover:text-purple-600 hover:underline"
               href="/cookie"
             >
               Cookie policy
@@ -141,7 +141,7 @@ const Footer = () => (
             id="footer-navi-2"
           >
             <a
-              className="text-gray-700  text-small hover:text-purple-600"
+              className="text-gray-700  text-small hover:text-purple-600 hover:underline"
               href="/privacy"
             >
               Privacy
