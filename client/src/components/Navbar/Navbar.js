@@ -3,7 +3,7 @@ import { NavLink, withRouter } from "react-router-dom"
 import MobileMenu from "../MobileMenu/MobileMenu"
 import MobileMenuAuth from "../MobileMenu/MobileMenuAuth"
 import x from "../../assets/cancel.svg"
-import { getToken, clearBasket, clearToken } from "../../utils"
+import { getToken, clearBasket, clearToken, getBasket } from "../../utils"
 import basketIcon from "../../assets/shopping-cart.svg"
 import line from "../../assets/logo-line.svg"
 
@@ -11,6 +11,7 @@ const Navbar = ({ basketOpenInfo, ...props }) => {
   const toggleBasket = () => {
     basketOpenInfo()
   }
+
   const handleSignout = () => {
     clearToken()
     clearBasket()
@@ -35,6 +36,12 @@ const AuthNav = ({ handleSignout, basketOpen }) => {
 
   const toggleMobileMenu = () => {
     setMenuState(!isMenuOpen)
+  }
+
+  const inTheBasket = () => {
+    let sum = 0
+    getBasket().map((item) => (sum += item.quantity))
+    return sum
   }
 
   return (
@@ -77,7 +84,7 @@ const AuthNav = ({ handleSignout, basketOpen }) => {
             </div>
             <div className="flex flex-row items items-center">
               <button
-                className="px-3 py-1 mx-2 button-beep"
+                className="px-3 py-1 mx-2 basket-beep"
                 onClick={toggleBasket}
               >
                 <img
@@ -85,6 +92,7 @@ const AuthNav = ({ handleSignout, basketOpen }) => {
                   alt="basket-trolley"
                   className="h-6 w-6"
                 />
+                <span className="items-counter">{inTheBasket()}</span>
               </button>
 
               <NavLink
@@ -194,7 +202,7 @@ const UnAuthNav = ({ basketOpen }) => {
 
             <div className="flex flex-row items-center">
               <button
-                className="mx-2 button-beep h-6 w-6 sm:mr-6"
+                className="mx-2 basket-beep h-6 w-6 sm:mr-6"
                 onClick={toggleBasket}
               >
                 <img
