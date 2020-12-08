@@ -28,8 +28,8 @@ const SingleItem = ({ passNewBasketItems, ...props }) => {
 
   const { loading, error, data } = useQuery(ITEM)
 
-  const handleClick = (item) => {
-    passNewBasketItems(item)
+  const handleClickAddToBasket = (item, isBuy) => {
+    passNewBasketItems(item, isBuy)
   }
 
   if (loading)
@@ -95,12 +95,12 @@ const SingleItem = ({ passNewBasketItems, ...props }) => {
 
           <div className="flex flex-row mt-4">
             <button
-              onClick={() => handleClick(data.item)}
+              onClick={() => handleClickAddToBasket(data.item, false)}
               className="button-beep mx-2 w-1/2 shadow appearance-none rounded-full bg-purple-600 button text-md leading-none text-white font-semibold px-8 py-2"
             >
               {`Add to basket`}
             </button>
-            <button className="button-beep mx-2 w-1/2 shadow appearance-none rounded-full bg-purple-600 button text-md leading-none text-white font-semibold px-8 py-2">
+            <button onClick={() => handleClickAddToBasket(data.item, true)} className="button-beep mx-2 w-1/2 shadow appearance-none rounded-full bg-purple-600 button text-md leading-none text-white font-semibold px-8 py-2">
               <span className="flex flex-row justify-center items-center">
                 <img
                   className="h-6 pr-4 fill-white"

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react"
 import { calculatePrice, getBasket, setBasket } from "../../utils"
-import { Link } from "react-router-dom"
+import { Link, withRouter } from "react-router-dom"
 import x from "../../assets/cancel.svg"
 
 const Basket = ({
@@ -8,6 +8,8 @@ const Basket = ({
   basketOpen,
   toggleBasketItself,
   passAllBasketItems,
+  toCheckout,
+  ...props
 }) => {
   const [basketItems, setBasketItems] = useState([])
 
@@ -43,11 +45,22 @@ const Basket = ({
   useEffect(() => {
     setBasket(basketItems)
     sendAllBasketItems(basketItems)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [basketItems])
 
   //get basket from props
   useEffect(() => {
-    if (toAdd.item) addToCart(toAdd.item)
+    if (toAdd.item){
+      if (toAdd.reset === false){
+        addToCart(toAdd.item)
+      } else {
+        setBasketItems([{
+          ...toAdd.item,
+          quantity: 1,
+        }])
+        props.history.push("/checkout")
+      }
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [toAdd])
 
@@ -63,7 +76,7 @@ const Basket = ({
     )
     setBasketItems(updatedItems)
   }
-
+  
   return (
     <div
       className={
@@ -141,4 +154,4 @@ const Basket = ({
   )
 }
 
-export default Basket
+export default withRouter(Basket)

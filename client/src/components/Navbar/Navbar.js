@@ -218,7 +218,6 @@ const UnAuthNav = ({ basketOpen }) => {
                 />
                 <span className="items-counter">{inTheBasket()}</span>
               </button>
-              
               <NavLink
                 to="/signin"
                 activeClassName="italic"

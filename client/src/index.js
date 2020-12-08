@@ -56,9 +56,17 @@ const Root = () => {
   }
 
   const [newItem, setnewItem] = useState(0)
-  const sendBasketItems = (item) => {
-    setnewItem({ item, counter })
-    counter++
+  const sendBasketItems = (item, buy) => {
+    let reset = false
+    if (!buy) {
+      setnewItem({ item, counter, reset })
+      counter++
+    } else {
+      reset = true
+      setnewItem({ item, counter, reset })
+      counter++
+    }
+    
   }
 
   const [basketItems, setBasketItems] = useState([])

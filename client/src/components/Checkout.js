@@ -64,12 +64,11 @@ const CheckoutForm = ({ newBasketItems, ...props }) => {
 
   useEffect(() => {
     setBasketItems(newBasketItems)
-    // setBasketItems(getBasket())
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   useEffect(() => {
     setBasketItems(newBasketItems)
-    // setBasketItems(getBasket())
   }, [newBasketItems])
 
   const handleChange = (event) => {
