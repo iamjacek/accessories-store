@@ -161,6 +161,12 @@ const UnAuthNav = ({ basketOpen }) => {
     basketOpen()
   }
 
+  const inTheBasket = () => {
+    let sum = 0
+    getBasket().map((item) => (sum += item.quantity))
+    return sum
+  }
+
   return (
     <nav className="w-full bg-white pb-2 px-2 sm:px-6 md:px-12">
       <div className="w-full flex items-center justify-between flex-col">
@@ -201,8 +207,8 @@ const UnAuthNav = ({ basketOpen }) => {
             </div>
 
             <div className="flex flex-row items-center">
-              <button
-                className="mx-2 basket-beep h-6 w-6 sm:mr-6"
+            <button
+                className="px-3 py-1 mx-2 basket-beep"
                 onClick={toggleBasket}
               >
                 <img
@@ -210,7 +216,9 @@ const UnAuthNav = ({ basketOpen }) => {
                   alt="basket-trolley"
                   className="h-6 w-6"
                 />
+                <span className="items-counter">{inTheBasket()}</span>
               </button>
+              
               <NavLink
                 to="/signin"
                 activeClassName="italic"
