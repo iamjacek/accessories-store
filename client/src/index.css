@@ -1,9 +1,0 @@
-body,
-html,
-* {
-  margin: 0;
-  box-sizing: border-box;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  font-family: "Montserrat", sans-serif;
-}
