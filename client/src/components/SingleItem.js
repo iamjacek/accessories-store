@@ -4,7 +4,7 @@ import Spinner from "./Spinner"
 import { Link } from "react-router-dom"
 import basketIcon from "../assets/shopping-cart.svg"
 
-const apiUrl = process.env.API_URL || "http://localhost:1337"
+const apiUrl = "https://accessories.herokuapp.com"
 
 const SingleItem = ({ passNewBasketItems, ...props }) => {
   const ITEM = gql`
@@ -100,7 +100,10 @@ const SingleItem = ({ passNewBasketItems, ...props }) => {
             >
               {`Add to basket`}
             </button>
-            <button onClick={() => handleClickAddToBasket(data.item, true)} className="button-beep mx-2 w-1/2 shadow appearance-none rounded-full bg-purple-600 button text-md leading-none text-white font-semibold px-8 py-2">
+            <button
+              onClick={() => handleClickAddToBasket(data.item, true)}
+              className="button-beep mx-2 w-1/2 shadow appearance-none rounded-full bg-purple-600 button text-md leading-none text-white font-semibold px-8 py-2"
+            >
               <span className="flex flex-row justify-center items-center">
                 <img
                   className="h-6 pr-4 fill-white"

@@ -24,7 +24,7 @@ import Basket from "./components/Basket/Basket"
 import { ApolloClient, InMemoryCache } from "@apollo/client"
 import { ApolloProvider } from "@apollo/client"
 
-const apiUrl = process.env.API_URL || "http://localhost:1337/graphql"
+const apiUrl = "https://accessories.herokuapp.com/graphql"
 
 const client = new ApolloClient({
   uri: apiUrl,
@@ -66,7 +66,6 @@ const Root = () => {
       setnewItem({ item, counter, reset })
       counter++
     }
-    
   }
 
   const [basketItems, setBasketItems] = useState([])

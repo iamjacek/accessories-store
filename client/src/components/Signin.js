@@ -34,7 +34,7 @@ const Signin = (props) => {
     }
     setLoading(true)
     axios
-      .post("http://localhost:1337/auth/local", {
+      .post("https://accessories.herokuapp.com/auth/local", {
         identifier: inputValues.username,
         password: inputValues.password,
       })

@@ -20,7 +20,7 @@ import {
   CardElement,
 } from "@stripe/react-stripe-js"
 
-const apiUrl = process.env.API_URL || "http://localhost:1337"
+const apiUrl = "https://accessories.herokuapp.com"
 
 const CARD_ELEMENT_OPTIONS = {
   hidePostalCode: true,

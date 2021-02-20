@@ -6,7 +6,7 @@ import { filteredCats } from "../utils"
 
 import { Link } from "react-router-dom"
 
-const apiUrl = process.env.API_URL || "http://localhost:1337"
+const apiUrl = "https://accessories.herokuapp.com"
 
 const Items = ({ passNewBasketItems, ...props }) => {
   const ITEMS = gql`

@@ -23,7 +23,7 @@ const CATS = gql`
 `
 
 function App() {
-  const apiUrl = process.env.API_URL || "http://localhost:1337"
+  const apiUrl = "https://accessories.herokuapp.com"
 
   const { loading, error, data } = useQuery(CATS)
   const [searchTerm, setSearchTerm] = useState("")
