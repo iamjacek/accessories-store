@@ -413,6 +413,7 @@ const ConfirmationModal = ({
 const Checkout = ({ newBasketItems, ...props }) => {
   const [allBasketItems, setAllBasketItems] = useState([])
 
+  // eslint-disable-next-line no-use-before-define
   const [stripePromise, setStripePromise] = useState(() =>
     loadStripe(
       "pk_test_51HZcgAIP5TcR6XA3gYHb8uWkOI7S4zrZEFeTdXrRbMhyzZj3r7cxhFmDhuEUnScKoG9FHz3MQOcI6vHU7HGmXAfb00yJnhMRid"
