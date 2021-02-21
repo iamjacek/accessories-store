@@ -39,6 +39,7 @@ function App() {
       <main className="container text-xl mx-auto px-4 sm:px-8 flex-grow max-w-full flex items-center justify-center">
         <p className="bg-gray-100 px-8 py-3 rounded-xl">
           Error, please contact our support or try again later.
+          {console.log(error.message)}
         </p>
       </main>
     )
