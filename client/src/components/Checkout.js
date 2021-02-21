@@ -120,6 +120,17 @@ const CheckoutForm = ({ newBasketItems, ...props }) => {
 
     setOrderProcessing(true)
 
+    console.log(
+      token,
+      fullName,
+      address,
+      amount,
+      postCode,
+      confirmationEmail,
+      city,
+      (items: basketItems)
+    )
+
     const options = {
       url: `${apiUrl}/orders`,
       method: "POST",
