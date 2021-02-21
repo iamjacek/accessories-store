@@ -128,7 +128,7 @@ const CheckoutForm = ({ newBasketItems, ...props }) => {
       postCode,
       confirmationEmail,
       city,
-      (items: basketItems)
+      basketItems
     )
 
     const options = {
