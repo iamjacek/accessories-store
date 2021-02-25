@@ -71,7 +71,7 @@ const SingleItem = ({ passNewBasketItems, ...props }) => {
         <div className="flex justify-center items-center w-full sm:w-1/2 p-4">
           <img
             className="w-64 h-64 object-cover align-center"
-            src={`${apiUrl}${image.url}`}
+            src={`${image.url}`}
             alt={image.name}
           />
         </div>

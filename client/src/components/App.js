@@ -86,7 +86,7 @@ function App() {
             >
               <img
                 className="w-full h-40 object-cover"
-                src={`${apiUrl}${cat.image.url}`}
+                src={`${cat.image.url}`}
                 alt={cat.image.name}
               />
               <div className="px-4 py-2 border-top">

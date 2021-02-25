@@ -100,7 +100,7 @@ const Items = ({ passNewBasketItems, ...props }) => {
               <Link to={`/item/${item._id}/${item.name}`}>
                 <img
                   className="w-full h-40 object-cover"
-                  src={`${apiUrl}${item.image.url}`}
+                  src={`${item.image.url}`}
                   alt={item.image.name}
                 />
               </Link>
