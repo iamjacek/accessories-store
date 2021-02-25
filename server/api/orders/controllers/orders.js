@@ -1,6 +1,8 @@
 "use strict";
-
-const stripe = require("stripe")(process.env.SK_STRIPE);
+//key is publi as project is for learning purpose only
+const stripe = require("stripe")(
+  "sk_test_51HZcgAIP5TcR6XA3RCpd7y04spOo9PoaWkNa2X2W3Z3IiFwlXvcE06UHUmxiuoJZuEYOSYFl2Bchd4yPohy9FbUe00e1rn6FYd"
+);
 
 /**
  * Read the documentation (https://strapi.io/documentation/v3.x/concepts/controllers.html#core-controllers)
