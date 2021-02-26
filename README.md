@@ -23,3 +23,8 @@ React, router, axios, tailwind, graphql, apollo
 ### Online acces
 
 Store has been deployed on <https://www.beep-line.com>
+
+### To pass throught check out:
+Use card number 4242 4242 4242 4242 code: 424
+To pass check out.
+Order will be save in strapi, payment in stripe.
