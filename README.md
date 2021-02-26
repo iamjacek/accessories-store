@@ -2,7 +2,7 @@
 
 Simply create account, add items to a basket and proceed to checkout to make a payment.
 You can ammend your basket, remove or add items on the fly.
-Stripe is being used to process payments and send confirmation emails with receipt from custom domain.
+Stripe is being used to process payments.
 
 ## Stack
 
@@ -14,7 +14,7 @@ Stripe is being used to process payments and send confirmation emails with recei
 
 ## Backend
 
-Strapi deployed on heroku. Images on cloudinary (heroku keep them for one dyno cycle only). MongoDB.
+Strapi deployed on heroku. Images on cloudinary. MongoDB.
 
 ## Frontend
 
@@ -28,3 +28,12 @@ Store has been deployed on <https://www.beep-line.com>
 Use card number 4242 4242 4242 4242 code: 424
 To pass check out.
 Order will be save in strapi, payment in stripe.
+
+### Some features:
+- Add to basket
+- Buy now button, it goes right away to checkout with selected item
+- Search items/categories by name or description
+- Basket component let you ammend your order and check it
+- Modal msg after submitting checkout. Final chance to confirm.
+- Process payment with stripe and send email with receipt after purchace from custom domain.
+- Images on Cloudinary (heroku keep them for one dyno cycle only)
